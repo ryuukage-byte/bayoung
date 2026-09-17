@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bayoung Exopet — Meet Your Exotic Companion</title>
+  <meta name="description" content="Digital storefront, portfolio, dan pusat edukasi perawatan hewan eksotis Bayoung Exopet di Malang. Musang Pandan, Otter, Hamster, Rabbit & Wood Pellets Premium.">
+  <meta name="keywords" content="Bayoung Exopet, Musang Pandan Malang, Exotic Pet Indonesia, Adopsi Musang, Wood Pellets Malang, Otter Indonesia">
+  <meta name="author" content="Abbiyu Nafis Alwan - Bayoung Exopet">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bayoung Exopet — Meet Your Exotic Companion">
+  <meta property="og:description" content="Digital storefront & portfolio studio exotic pet. Temukan sahabat eksotis dan perlengkapan wood pellets berkualitas.">
+  <meta property="og:image" content="assets/images/hero_musang.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Caveat (Script), Fredoka/Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/bayoung_icon_transparent.png">
+</head>
+<body>
+
+  <!-- =================================================================
+       SITE HEADER / NAVBAR
+       ================================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" aria-label="Bayoung Exopet Home">
+        <div class="brand-icon-box">
+          <img src="assets/images/bayoung_icon_transparent.png" alt="Bayoung Mascot Logo" class="brand-icon-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Bayoung</span>
+          <span class="brand-tagline">EXOPET</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="main-nav" id="main-nav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#animals" class="nav-link">Animals</a>
+        <a href="#adoption" class="nav-link">Adoption</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#learn" class="nav-link">Learn</a>
+        <a href="#community" class="nav-link">Community</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <!-- Search Button -->
+        <button class="icon-btn" onclick="showSearchModal()" aria-label="Cari hewan dan produk">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- User / Profile / Location Button -->
+        <button class="icon-btn" onclick="showLocationModal()" aria-label="Profil dan Lokasi Studio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Hubungi Kami WhatsApp CTA Button -->
+        <a href="https://wa.me/6281252517813?text=Halo%20Bayoung%20Exopet,%20saya%20tertarik%20konsultasi%20seputar%20hewan%20dan%20produk%20wood%20pellets." target="_blank" rel="noopener noreferrer" class="btn-contact-wa" aria-label="Hubungi Kami di WhatsApp">
+          <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/>
+          </svg>
+          Hubungi Kami
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Buka Menu Mobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =================================================================
+       HERO SECTION
+       ================================================================= -->
+  <section class="hero-section" id="home">
+    <div class="container hero-grid">
+      
+      <!-- Left Content -->
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          Meet Your <span class="sparkle">✦</span><br>
+          Exotic Companion.
+        </h1>
+        <p class="hero-desc">
+          Explore, learn, and find your next companion with Bayoung Exopet.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#adoption" class="btn-primary">
+            Explore Animals
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <button onclick="inquireCommunity()" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Join Our Community
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Visual (Musang Pandan Photo + Floating Badges) -->
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <img src="assets/images/hero_musang.jpg" alt="Musang Pandan Bayoung Exopet" id="hero-main-img">
+          
+          <!-- Handwritten Annotation: Musang Pandan -->
+          <div class="hero-annotation">
+            <span class="annotation-text">Musang Pandan</span>
+            <!-- Hand-drawn curved arrow pointing to the civet -->
+            <svg class="annotation-arrow" viewBox="0 0 60 30" fill="none" stroke="currentColor">
+              <path d="M10 20 Q 35 25, 48 8" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M42 6 L 48 8 L 47 15" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Floating Organic Badge Top Right -->
+        <div class="hero-badge-blob">
+          <span class="badge-sparkle">✦</span>
+          <span class="badge-text">Small<br>Creatures<br>Big Joy</span>
+          <span class="badge-paw">🐾</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       OUR WORLD CATEGORY BAR
+       ================================================================= -->
+  <section class="our-world-section" id="animals">
+    <div class="container">
+      <div class="our-world-bar">
+        
+        <!-- Intro Label -->
+        <div class="world-intro">
+          <div class="world-tag">
+            <span style="color: var(--primary);">✦</span> Our World
+          </div>
+          <span class="world-subtitle">Different species, same love.</span>
+        </div>
+
+        <!-- Category Avatars with Round Arrow Buttons -->
+        <div class="category-avatars">
+          
+          <!-- 1. Musang -->
+          <div class="category-item" onclick="filterCategory('Musang')">
+            <div class="avatar-circle">
+              <img src="assets/images/guide_musang.jpg" alt="Musang">
+            </div>
+            <span class="category-name">Musang</span>
+            <div class="category-arrow-btn">➔</div>
+          </div>
+
+          <!-- 2. Otter -->
+          <div class="category-item" onclick="filterCategory('Otter')">
+            <div class="avatar-circle">
+              <img src="assets/images/otter.jpg" alt="Otter">
+            </div>
+            <span class="category-name">Otter</span>
+            <div class="category-arrow-btn">➔</div>
+          </div>
+
+          <!-- 3. Rodent -->
+          <div class="category-item" onclick="filterCategory('Rodent')">
+            <div class="avatar-circle">
+              <img src="assets/images/hamster.jpg" alt="Rodent">
+            </div>
+            <span class="category-name">Rodent</span>
+            <div class="category-arrow-btn">➔</div>
+          </div>
+
+          <!-- 4. Rabbit -->
+          <div class="category-item" onclick="filterCategory('Rabbit')">
+            <div class="avatar-circle">
+              <img src="assets/images/rabbit.jpg" alt="Rabbit">
+            </div>
+            <span class="category-name">Rabbit</span>
+            <div class="category-arrow-btn">➔</div>
+          </div>
+
+          <!-- 5. Other -->
+          <div class="category-item" onclick="filterCategory('Other')">
+            <div class="avatar-circle">
+              <img src="assets/images/hedgehog.jpg" alt="Other Exotic Pets">
+            </div>
+            <span class="category-name">Other</span>
+            <div class="category-arrow-btn">➔</div>
+          </div>
+
+        </div>
+
+        <!-- Right Button -->
+        <button onclick="showAllAnimalsModal()" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem; flex-shrink: 0;">
+          View All Animals ➔
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+       AVAILABLE FOR ADOPTION SECTION
+       ================================================================= -->
+  <section class="adoption-section" id="adoption">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header-row">
+        <div class="section-header-left">
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Adoption
+          </div>
+          <h2 class="section-title">Available<br>for Adoption</h2>
+          <p class="section-desc">Healthy, well-cared for, and ready for a new home.</p>
+          <div class="paw-watermark">🐾</div>
+        </div>
+
+        <div class="header-cta-group">
+          <!-- Carousel Navigation Arrows -->
+          <button class="carousel-nav-btn" onclick="slideAdoptionCarousel('prev')" aria-label="Geser ke kiri">‹</button>
+          <button class="carousel-nav-btn" onclick="slideAdoptionCarousel('next')" aria-label="Geser ke kanan">›</button>
+          
+          <button onclick="showAllAnimalsModal()" class="btn-pill-action">
+            View All Available ➔
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Adoption Cards Grid -->
+      <div class="adoption-grid" id="adoption-grid">
+        
+        <!-- Card 1: Musang Pandan -->
+        <div class="adoption-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/guide_musang.jpg" alt="Musang Pandan">
+          </div>
+          <div class="card-content">
+            <span class="card-category-badge">Musang</span>
+            <h3 class="card-animal-name">Musang Pandan</h3>
+            <div class="card-status-row">
+              <span class="status-dot"></span>
+              <span>Available</span>
+            </div>
+            <a href="javascript:void(0)" onclick="showAnimalDetail('musang-pandan')" class="card-action-link">
+              View Details ➔
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Asian Small-Clawed Otter -->
+        <div class="adoption-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/otter.jpg" alt="Asian Small-Clawed Otter">
+          </div>
+          <div class="card-content">
+            <span class="card-category-badge">Otter</span>
+            <h3 class="card-animal-name">Asian Small-Clawed Otter</h3>
+            <div class="card-status-row">
+              <span class="status-dot"></span>
+              <span>Available</span>
+            </div>
+            <a href="javascript:void(0)" onclick="showAnimalDetail('asian-otter')" class="card-action-link">
+              View Details ➔
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Hamster Syrian -->
+        <div class="adoption-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/hamster.jpg" alt="Hamster Syrian">
+          </div>
+          <div class="card-content">
+            <span class="card-category-badge">Rodent</span>
+            <h3 class="card-animal-name">Hamster Syrian</h3>
+            <div class="card-status-row">
+              <span class="status-dot"></span>
+              <span>Available</span>
+            </div>
+            <a href="javascript:void(0)" onclick="showAnimalDetail('hamster-syrian')" class="card-action-link">
+              View Details ➔
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Netherland Dwarf -->
+        <div class="adoption-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/rabbit.jpg" alt="Netherland Dwarf">
+          </div>
+          <div class="card-content">
+            <span class="card-category-badge">Rabbit</span>
+            <h3 class="card-animal-name">Netherland Dwarf</h3>
+            <div class="card-status-row">
+              <span class="status-dot"></span>
+              <span>Available</span>
+            </div>
+            <a href="javascript:void(0)" onclick="showAnimalDetail('netherland-dwarf')" class="card-action-link">
+              View Details ➔
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       QUALITY SUPPLIES FOR HAPPY PETS (PRODUCTS SECTION)
+       ================================================================= -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="products-wrapper">
+        
+        <!-- Left: Intro & Title -->
+        <div class="products-intro-col">
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Products
+          </div>
+          <h2 class="section-title">Quality Supplies<br>for Happy Pets</h2>
+          <p class="section-desc">We provide selected pet supplies for your exotic friends.</p>
+          <div style="margin-top: 24px;">
+            <button onclick="showAllProductsModal()" class="btn-pill-action">
+              View All Products ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Center: Wood Pellets Packaging Showcase -->
+        <div class="products-showcase-col" onclick="showProductDetail('wood-pellets')" style="cursor: pointer;">
+          <div class="wood-pellet-image-box">
+            <img src="assets/images/wood_pellets_bag.jpg" alt="Wood Pellets Bayoung Exopet">
+            
+            <!-- Handwritten Callout: Wood Pellets - Premium Quality - -->
+            <div class="pellet-callout">
+              <span class="pellet-callout-text">Wood Pellets<br>~ Premium Quality ~</span>
+              <svg class="pellet-callout-arrow" viewBox="0 0 50 30" fill="none" stroke="currentColor">
+                <path d="M40 5 Q 25 15, 12 24" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M18 25 L 12 24 L 14 18" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 2x2 Product Category Cards -->
+        <div class="products-grid-2x2">
+          
+          <!-- 1. Wood Pellets -->
+          <div class="product-thumb-card" onclick="showProductDetail('wood-pellets')">
+            <div class="product-thumb-img">
+              <img src="assets/images/wood_pellets_pile.jpg" alt="Wood Pellets">
+            </div>
+            <span class="product-thumb-title">Wood Pellets</span>
+          </div>
+
+          <!-- 2. Food & Nutrition -->
+          <div class="product-thumb-card" onclick="showProductDetail('food-nutrition')">
+            <div class="product-thumb-img">
+              <img src="assets/images/food_nutrition.jpg" alt="Food & Nutrition">
+            </div>
+            <span class="product-thumb-title">Food & Nutrition</span>
+          </div>
+
+          <!-- 3. Habitat & Enclosure -->
+          <div class="product-thumb-card" onclick="showProductDetail('habitat-enclosure')">
+            <div class="product-thumb-img">
+              <img src="assets/images/habitat_enclosure.jpg" alt="Habitat & Enclosure">
+            </div>
+            <span class="product-thumb-title">Habitat & Enclosure</span>
+          </div>
+
+          <!-- 4. Accessories -->
+          <div class="product-thumb-card" onclick="showProductDetail('accessories')">
+            <div class="product-thumb-img">
+              <img src="assets/images/pet_accessories.jpg" alt="Accessories">
+            </div>
+            <span class="product-thumb-title">Accessories</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+       DUAL PROMO CARDS: EXOTIC PET GUIDE & JOIN OUR COMMUNITY
+       ================================================================= -->
+  <section class="dual-promo-section" id="learn">
+    <div class="container">
+      <div class="dual-cards-grid">
+        
+        <!-- Left Card: Learn & Grow / Exotic Pet Guide -->
+        <div class="promo-card">
+          <div class="promo-card-content">
+            <div class="section-tag">
+              <span class="sparkle">✦</span> Learn & Grow
+            </div>
+            <h3 class="promo-title">Exotic Pet Guide</h3>
+            <p class="promo-desc">
+              Care tips, feeding, habitat setup, and more. Learn everything you need to give the best for your pet.
+            </p>
+            <button onclick="showGuidesModal('guide-musang')" class="btn-pill-action">
+              Explore Guides ➔
+            </button>
+          </div>
+
+          <div class="guide-visual-wrap">
+            <div class="guide-animal-avatar">
+              <img src="assets/images/guide_musang.jpg" alt="Musang Pandan Guide">
+            </div>
+
+            <!-- Handwritten Speech Bubble Doodle -->
+            <div class="speech-bubble-doodle">
+              <span>Good<br>Care<br>=<br>Happy<br>Pet</span>
+            </div>
+
+            <!-- Purple Book Icon Badge -->
+            <div class="guide-book-badge">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Card: Join Our Community / Let's Stay Connected -->
+        <div class="promo-card" id="community">
+          <div class="promo-card-content">
+            <div class="section-tag">
+              <span class="sparkle">✦</span> Join Our Community
+            </div>
+            <h3 class="promo-title">Let's Stay Connected!</h3>
+            <p class="promo-desc">
+              Meet other exotic pet keepers, share experiences, and learn together.
+            </p>
+            <div class="promo-buttons-row">
+              <button onclick="inquireCommunity()" class="btn-primary" style="padding: 10px 20px; font-size: 0.88rem;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/></svg>
+                Join WhatsApp Group
+              </button>
+              <a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 10px 18px; font-size: 0.88rem;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Follow Instagram
+              </a>
+            </div>
+          </div>
+
+          <div class="community-visual-wrap">
+            <div class="phone-mockup-wrap">
+              <img src="assets/images/community_phone.jpg" alt="Instagram Bayoung Exopet Feed">
+            </div>
+
+            <!-- Floating 1.2k+ Members Pill -->
+            <div class="community-members-pill">
+              <span>1.2k+</span> Members
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+       FOOTER
+       ================================================================= -->
+  <footer class="site-footer" id="about">
+    <div class="container">
+      
+      <div class="footer-top-grid">
+        
+        <!-- Column 1: Brand & Bio -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-logo">
+            <div class="footer-brand-icon">
+              <img src="assets/images/bayoung_icon_transparent.png" alt="Bayoung Mascot Logo" class="footer-icon-img">
+            </div>
+            <div>
+              <div class="footer-brand-name">Bayoung</div>
+              <div class="footer-brand-tagline">EXOPET</div>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Studio exotic pet, brand edukasi, dan penyedia wood pellets premium terpercaya di Malang, Jawa Timur.
+          </p>
+          <div class="footer-address">
+            <span>📍</span>
+            <span>WJHG+2PQ, Jl. Raya Segenggeng, Wonokerso, Kec. Pakisaji, Kab. Malang, Jawa Timur 65162</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#animals" class="footer-link">Animals</a></li>
+            <li><a href="#adoption" class="footer-link">Adoption</a></li>
+            <li><a href="#products" class="footer-link">Products</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Learn -->
+        <div>
+          <h4 class="footer-col-title">Learn</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" onclick="showGuidesModal('guide-musang')" class="footer-link">Guides</a></li>
+            <li><a href="javascript:void(0)" onclick="showGuidesModal('guide-wood-pellets')" class="footer-link">Articles</a></li>
+            <li><a href="javascript:void(0)" onclick="showGuidesModal('guide-otter')" class="footer-link">Care Tips</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Community -->
+        <div>
+          <h4 class="footer-col-title">Community</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" onclick="inquireCommunity()" class="footer-link">WhatsApp Group</a></li>
+            <li><a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@bayoungexopet?_r=1&_t=ZS-99meC0q93Ga" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok</a></li>
+            <li><a href="https://www.facebook.com/share/19KmGNmRGB/" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: About & Social Icons -->
+        <div>
+          <h4 class="footer-col-title">About</h4>
+          <ul class="footer-links-list" style="margin-bottom: 20px;">
+            <li><a href="javascript:void(0)" onclick="showLocationModal()" class="footer-link">Our Story & Founder</a></li>
+            <li><a href="javascript:void(0)" onclick="showAllProductsModal()" class="footer-link">Services</a></li>
+            <li><a href="javascript:void(0)" onclick="showLocationModal()" class="footer-link">Contact Studio</a></li>
+          </ul>
+
+          <div class="footer-social-box">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram Bayoung Exopet">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@bayoungexopet?_r=1&_t=ZS-99meC0q93Ga" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="TikTok Bayoung Exopet">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V7.89a8.28 8.28 0 0 0 3.91 1V6.69z"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/share/19KmGNmRGB/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook Bayoung Exopet">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.7 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/></svg>
+            </a>
+          </div>
+
+          <div class="footer-slogan">
+            <span>Exotic Pets</span><br>
+            <span>Better Lives 🐾</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>© 2025 Bayoung Exopet. All rights reserved. (Abbiyu Nafis Alwan)</div>
+        <div class="footer-bottom-tagline">Explore • Learn • Connect 💜</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =================================================================
+       MODAL OVERLAY & DIALOG (Dynamic Content)
+       ================================================================= -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-dialog" id="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal()" aria-label="Tutup Dialog">✕</button>
+      <div id="modal-body">
+        <!-- Content will be injected dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
