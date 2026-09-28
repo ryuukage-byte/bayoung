@@ -1723,3 +1723,526 @@ img {
   }
 }
 
+/* ===================================================================
+   DEDICATED PAGE / RUANG SYSTEM (SPA ROUTING)
+   =================================================================== */
+
+.page-view {
+  display: none;
+  opacity: 0;
+  min-height: calc(100vh - 80px - 340px);
+}
+
+.page-view.page-active {
+  display: block;
+  opacity: 1;
+  animation: pageFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page Header Banner */
+.page-header-banner {
+  background: linear-gradient(135deg, #f8f4fe 0%, #ede3fc 50%, #fdf9ff 100%);
+  padding: 52px 0 40px 0;
+  border-bottom: 1px solid rgba(232, 219, 252, 0.85);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 44px;
+}
+
+.page-header-banner::after {
+  content: '🐾';
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+  font-size: 8.5rem;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.breadcrumb-nav a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.breadcrumb-nav a:hover {
+  text-decoration: underline;
+}
+
+.page-header-title {
+  font-size: 2.45rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+
+.page-header-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+/* Filter Bar for Adopsi & Produk */
+.filter-bar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1.5px solid #f2ecfa;
+}
+
+.filter-pills-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-pill-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--primary-border);
+  background: #ffffff;
+  color: var(--text-main);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-pill-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.filter-pill-btn.active {
+  background: var(--primary);
+  color: #ffffff !important;
+  border-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(110, 43, 198, 0.28);
+}
+
+/* Value Props Grid on Beranda */
+.value-props-section {
+  padding: 56px 0;
+  background: #ffffff;
+  border-bottom: 1px solid #f2ecfa;
+}
+
+.value-props-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.value-prop-card {
+  background: #faf7ff;
+  border: 1.5px solid var(--primary-border);
+  border-radius: 20px;
+  padding: 26px 22px;
+  transition: var(--transition);
+}
+
+.value-prop-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.value-prop-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.value-prop-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.value-prop-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Room Shortcut Cards on Beranda */
+.rooms-shortcut-section {
+  padding: 64px 0 80px 0;
+}
+
+.rooms-shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.room-shortcut-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid #ece4f8;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.room-shortcut-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.room-shortcut-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.room-shortcut-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.room-shortcut-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Encyclopedia Profiles on Ragam Satwa */
+.encyclo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 56px;
+}
+
+.encyclo-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid #ece4f8;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.encyclo-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.encyclo-img-wrap {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f8f4fe;
+}
+
+.encyclo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.encyclo-card:hover .encyclo-img-wrap img {
+  transform: scale(1.05);
+}
+
+.encyclo-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.encyclo-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.encyclo-latin {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.encyclo-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.encyclo-traits span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.encyclo-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* FAQ Accordion on Edukasi */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto 60px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1.5px solid #ece4f8;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-item.active {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 20px 24px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+}
+
+.faq-question:hover {
+  color: var(--primary);
+}
+
+.faq-icon {
+  font-size: 1.3rem;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 24px 22px 24px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* Tentang Kami Page Styles */
+.about-founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.about-founder-img {
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 3px solid #ffffff;
+}
+
+.about-founder-img img {
+  width: 100%;
+  height: auto;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.pillar-card {
+  background: #ffffff;
+  border: 1.5px solid var(--primary-border);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.studio-info-banner {
+  background: linear-gradient(135deg, #2b1154 0%, #4c1d95 100%);
+  color: #ffffff;
+  border-radius: 28px;
+  padding: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 60px;
+}
+
+.studio-info-content h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.studio-info-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Full Products Grid for Produk Page */
+.full-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 56px;
+}
+
+.product-full-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid #ece4f8;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.product-full-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.product-full-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #f8f4fe;
+}
+
+.product-full-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Responsiveness for Page/Ruang System */
+@media (max-width: 1024px) {
+  .value-props-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .encyclo-grid,
+  .full-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header-title {
+    font-size: 1.85rem;
+  }
+  .rooms-shortcut-grid {
+    grid-template-columns: 1fr;
+  }
+  .value-props-grid {
+    grid-template-columns: 1fr;
+  }
+  .encyclo-grid,
+  .full-products-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-founder-grid {
+    grid-template-columns: 1fr;
+  }
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .studio-info-banner {
+    padding: 28px 20px;
+  }
+}
+

@@ -29,13 +29,13 @@
 <body>
 
   <!-- =================================================================
-       SITE HEADER / NAVBAR
+       SITE HEADER / NAVBAR (STICKY)
        ================================================================= -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       
       <!-- Brand Logo -->
-      <a href="#home" class="brand-logo" aria-label="Bayoung Exopet Beranda">
+      <a href="#/beranda" class="brand-logo" onclick="showPage('beranda'); return false;" aria-label="Bayoung Exopet Beranda">
         <div class="brand-icon-box">
           <img src="assets/images/bayoung_icon_transparent.png" alt="Logo Maskot Bayoung" class="brand-icon-img">
         </div>
@@ -45,21 +45,21 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Menu -->
+      <!-- Desktop Nav Menu (SPA Page Switcher) -->
       <nav class="main-nav" id="main-nav">
-        <a href="#home" class="nav-link active">Beranda</a>
-        <a href="#animals" class="nav-link">Ragam Satwa</a>
-        <a href="#adoption" class="nav-link">Adopsi</a>
-        <a href="#products" class="nav-link">Produk</a>
-        <a href="#learn" class="nav-link">Edukasi</a>
-        <a href="#community" class="nav-link">Komunitas</a>
-        <a href="#about" class="nav-link">Tentang Kami</a>
+        <a href="#/beranda" class="nav-link active" data-page="beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+        <a href="#/ragam-satwa" class="nav-link" data-page="ragam-satwa" onclick="showPage('ragam-satwa'); return false;">Ragam Satwa</a>
+        <a href="#/adopsi" class="nav-link" data-page="adopsi" onclick="showPage('adopsi'); return false;">Adopsi</a>
+        <a href="#/produk" class="nav-link" data-page="produk" onclick="showPage('produk'); return false;">Produk</a>
+        <a href="#/edukasi" class="nav-link" data-page="edukasi" onclick="showPage('edukasi'); return false;">Edukasi</a>
+        <a href="#/komunitas" class="nav-link" data-page="komunitas" onclick="showPage('komunitas'); return false;">Komunitas</a>
+        <a href="#/tentang-kami" class="nav-link" data-page="tentang-kami" onclick="showPage('tentang-kami'); return false;">Tentang Kami</a>
       </nav>
 
       <!-- Right Header Actions -->
       <div class="header-actions">
         <!-- Search Button -->
-        <button class="icon-btn" onclick="showSearchModal()" aria-label="Cari hewan dan produk">
+        <button class="icon-btn" onclick="showSearchModal()" aria-label="Cari satwa dan produk">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -67,7 +67,7 @@
         </button>
 
         <!-- User / Profile / Location Button -->
-        <button class="icon-btn" onclick="showLocationModal()" aria-label="Profil dan Lokasi Studio">
+        <button class="icon-btn" onclick="showPage('tentang-kami')" aria-label="Profil dan Lokasi Studio">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
@@ -75,7 +75,7 @@
         </button>
 
         <!-- Hubungi Kami WhatsApp CTA Button -->
-        <a href="https://wa.me/6281252517813?text=Halo%20Bayoung%20Exopet,%20saya%20tertarik%20konsultasi%20seputar%20hewan%20dan%20produk%20wood%20pellets." target="_blank" rel="noopener noreferrer" class="btn-contact-wa" aria-label="Hubungi Kami di WhatsApp">
+        <a href="https://wa.me/6281252517813?text=Halo%20Bayoung%20Exopet,%20saya%20tertarik%20konsultasi%20seputar%20satwa%20dan%20produk%20wood%20pellets." target="_blank" rel="noopener noreferrer" class="btn-contact-wa" aria-label="Hubungi Kami di WhatsApp">
           <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/>
           </svg>
@@ -94,414 +94,985 @@
   </header>
 
   <!-- =================================================================
-       HERO SECTION
+       MAIN CONTENT CONTAINER (SPA DEDICATED PAGES / RUANG)
        ================================================================= -->
-  <section class="hero-section" id="home">
-    <div class="container hero-grid">
+  <main id="app-main-content">
+
+    <!-- ===============================================================
+         PAGE 1: BERANDA (#page-beranda)
+         =============================================================== -->
+    <div class="page-view page-active" id="page-beranda">
       
-      <!-- Left Content -->
-      <div class="hero-content">
-        <h1 class="hero-headline">
-          Temukan <span class="sparkle">✦</span><br>
-          Sahabat Satwa Eksotis.
-        </h1>
-        <p class="hero-desc">
-          Jelajahi ragam satwa, pelajari perawatannya, dan temukan sahabat setia Anda bersama Bayoung Exopet.
-        </p>
-        <div class="hero-cta-group">
-          <a href="#adoption" class="btn-primary">
-            Lihat Satwa Adopsi
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-          <button onclick="inquireCommunity()" class="btn-secondary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            Gabung Komunitas
-          </button>
-        </div>
-      </div>
-
-      <!-- Right Visual (Musang Pandan Photo + Floating Badges) -->
-      <div class="hero-visual">
-        <div class="hero-image-wrapper">
-          <img src="assets/images/hero_musang.jpg" alt="Musang Pandan Bayoung Exopet" id="hero-main-img">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container hero-grid">
           
-          <!-- Handwritten Annotation: Musang Pandan -->
-          <div class="hero-annotation">
-            <span class="annotation-text">Musang Pandan</span>
-            <!-- Hand-drawn curved arrow pointing to the civet -->
-            <svg class="annotation-arrow" viewBox="0 0 60 30" fill="none" stroke="currentColor">
-              <path d="M10 20 Q 35 25, 48 8" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M42 6 L 48 8 L 47 15" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Floating Organic Badge Top Right -->
-        <div class="hero-badge-blob">
-          <span class="badge-sparkle">✦</span>
-          <span class="badge-text">Satwa Mungil<br>Bahagia<br>Nyata</span>
-          <span class="badge-paw">🐾</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =================================================================
-       OUR WORLD CATEGORY BAR
-       ================================================================= -->
-  <section class="our-world-section" id="animals">
-    <div class="container">
-      <div class="our-world-bar">
-        
-        <!-- Intro Label -->
-        <div class="world-intro">
-          <div class="world-tag">
-            <span style="color: var(--primary);">✦</span> Ragam Satwa
-          </div>
-          <span class="world-subtitle">Beragam jenis, satu ketulusan cinta satwa.</span>
-        </div>
-
-        <!-- Category Avatars with Round Arrow Buttons -->
-        <div class="category-avatars">
-          
-          <!-- 1. Musang -->
-          <div class="category-item" onclick="filterCategory('Musang')">
-            <div class="avatar-circle">
-              <img src="assets/images/guide_musang.jpg" alt="Musang">
-            </div>
-            <span class="category-name">Musang</span>
-            <div class="category-arrow-btn">➔</div>
-          </div>
-
-          <!-- 2. Otter -->
-          <div class="category-item" onclick="filterCategory('Otter')">
-            <div class="avatar-circle">
-              <img src="assets/images/otter.jpg" alt="Berang-berang">
-            </div>
-            <span class="category-name">Berang-berang</span>
-            <div class="category-arrow-btn">➔</div>
-          </div>
-
-          <!-- 3. Rodent -->
-          <div class="category-item" onclick="filterCategory('Rodent')">
-            <div class="avatar-circle">
-              <img src="assets/images/hamster.jpg" alt="Hamster">
-            </div>
-            <span class="category-name">Hamster</span>
-            <div class="category-arrow-btn">➔</div>
-          </div>
-
-          <!-- 4. Rabbit -->
-          <div class="category-item" onclick="filterCategory('Rabbit')">
-            <div class="avatar-circle">
-              <img src="assets/images/rabbit.jpg" alt="Kelinci">
-            </div>
-            <span class="category-name">Kelinci</span>
-            <div class="category-arrow-btn">➔</div>
-          </div>
-
-          <!-- 5. Other -->
-          <div class="category-item" onclick="filterCategory('Other')">
-            <div class="avatar-circle">
-              <img src="assets/images/hedgehog.jpg" alt="Satwa Lainnya">
-            </div>
-            <span class="category-name">Lainnya</span>
-            <div class="category-arrow-btn">➔</div>
-          </div>
-
-        </div>
-
-        <!-- Right Button -->
-        <button onclick="showAllAnimalsModal()" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem; flex-shrink: 0;">
-          Lihat Semua Satwa ➔
-        </button>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =================================================================
-       AVAILABLE FOR ADOPTION SECTION
-       ================================================================= -->
-  <section class="adoption-section" id="adoption">
-    <div class="container">
-      
-      <!-- Section Header -->
-      <div class="section-header-row">
-        <div class="section-header-left">
-          <div class="section-tag">
-            <span class="sparkle">✦</span> Adopsi Satwa
-          </div>
-          <h2 class="section-title">Satwa Siap<br>Diadopsi</h2>
-          <p class="section-desc">Sehat prima, terawat telaten, dan siap menyambut keluarga baru.</p>
-          <div class="paw-watermark">🐾</div>
-        </div>
-
-        <div class="header-cta-group">
-          <!-- Carousel Navigation Arrows -->
-          <button class="carousel-nav-btn" onclick="slideAdoptionCarousel('prev')" aria-label="Geser ke kiri">‹</button>
-          <button class="carousel-nav-btn" onclick="slideAdoptionCarousel('next')" aria-label="Geser ke kanan">›</button>
-          
-          <button onclick="showAllAnimalsModal()" class="btn-pill-action">
-            Lihat Semua Satwa ➔
-          </button>
-        </div>
-      </div>
-
-      <!-- 4 Adoption Cards Grid -->
-      <div class="adoption-grid" id="adoption-grid">
-        
-        <!-- Card 1: Musang Pandan -->
-        <div class="adoption-card">
-          <div class="card-image-wrap">
-            <img src="assets/images/guide_musang.jpg" alt="Musang Pandan">
-          </div>
-          <div class="card-content">
-            <span class="card-category-badge">Musang</span>
-            <h3 class="card-animal-name">Musang Pandan</h3>
-            <div class="card-status-row">
-              <span class="status-dot"></span>
-              <span>Tersedia</span>
-            </div>
-            <a href="javascript:void(0)" onclick="showAnimalDetail('musang-pandan')" class="card-action-link">
-              Lihat Detail ➔
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 2: Asian Small-Clawed Otter -->
-        <div class="adoption-card">
-          <div class="card-image-wrap">
-            <img src="assets/images/otter.jpg" alt="Berang-berang Cakar Kecil">
-          </div>
-          <div class="card-content">
-            <span class="card-category-badge">Berang-berang</span>
-            <h3 class="card-animal-name">Berang-berang Cakar Kecil</h3>
-            <div class="card-status-row">
-              <span class="status-dot"></span>
-              <span>Tersedia</span>
-            </div>
-            <a href="javascript:void(0)" onclick="showAnimalDetail('asian-otter')" class="card-action-link">
-              Lihat Detail ➔
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 3: Hamster Syrian -->
-        <div class="adoption-card">
-          <div class="card-image-wrap">
-            <img src="assets/images/hamster.jpg" alt="Hamster Syrian">
-          </div>
-          <div class="card-content">
-            <span class="card-category-badge">Hamster</span>
-            <h3 class="card-animal-name">Hamster Syrian</h3>
-            <div class="card-status-row">
-              <span class="status-dot"></span>
-              <span>Tersedia</span>
-            </div>
-            <a href="javascript:void(0)" onclick="showAnimalDetail('hamster-syrian')" class="card-action-link">
-              Lihat Detail ➔
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 4: Netherland Dwarf -->
-        <div class="adoption-card">
-          <div class="card-image-wrap">
-            <img src="assets/images/rabbit.jpg" alt="Kelinci Netherland Dwarf">
-          </div>
-          <div class="card-content">
-            <span class="card-category-badge">Kelinci</span>
-            <h3 class="card-animal-name">Kelinci Netherland Dwarf</h3>
-            <div class="card-status-row">
-              <span class="status-dot"></span>
-              <span>Tersedia</span>
-            </div>
-            <a href="javascript:void(0)" onclick="showAnimalDetail('netherland-dwarf')" class="card-action-link">
-              Lihat Detail ➔
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =================================================================
-       QUALITY SUPPLIES FOR HAPPY PETS (PRODUCTS SECTION)
-       ================================================================= -->
-  <section class="products-section" id="products">
-    <div class="container">
-      <div class="products-wrapper">
-        
-        <!-- Left: Intro & Title -->
-        <div class="products-intro-col">
-          <div class="section-tag">
-            <span class="sparkle">✦</span> Produk & Perlengkapan
-          </div>
-          <h2 class="section-title">Perlengkapan Pilihan<br>untuk Satwa Anda</h2>
-          <p class="section-desc">Kami menyediakan perlengkapan dan pakan terbaik untuk kenyamanan sahabat satwa eksotis Anda.</p>
-          <div style="margin-top: 24px;">
-            <button onclick="showAllProductsModal()" class="btn-pill-action">
-              Lihat Semua Produk ➔
-            </button>
-          </div>
-        </div>
-
-        <!-- Center: Wood Pellets Packaging Showcase -->
-        <div class="products-showcase-col" onclick="showProductDetail('wood-pellets')" style="cursor: pointer;">
-          <div class="wood-pellet-image-box">
-            <img src="assets/images/wood_pellets_bag.jpg" alt="Pelet Kayu Bayoung Exopet">
-            
-            <!-- Handwritten Callout: Wood Pellets - Premium Quality - -->
-            <div class="pellet-callout">
-              <span class="pellet-callout-text">Pelet Kayu (Wood Pellets)<br>~ Kualitas Terbaik ~</span>
-              <svg class="pellet-callout-arrow" viewBox="0 0 50 30" fill="none" stroke="currentColor">
-                <path d="M40 5 Q 25 15, 12 24" stroke-width="2.2" stroke-linecap="round"/>
-                <path d="M18 25 L 12 24 L 14 18" stroke-width="2.2" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: 2x2 Product Category Cards -->
-        <div class="products-grid-2x2" id="products-grid-2x2">
-          
-          <!-- 1. Wood Pellets -->
-          <div class="product-thumb-card" onclick="showProductDetail('wood-pellets')">
-            <div class="product-thumb-img">
-              <img src="assets/images/wood_pellets_pile.jpg" alt="Pelet Kayu">
-            </div>
-            <span class="product-thumb-title">Pelet Kayu (Wood Pellets)</span>
-          </div>
-
-          <!-- 2. Food & Nutrition -->
-          <div class="product-thumb-card" onclick="showProductDetail('food-nutrition')">
-            <div class="product-thumb-img">
-              <img src="assets/images/food_nutrition.jpg" alt="Pakan & Nutrisi">
-            </div>
-            <span class="product-thumb-title">Pakan & Nutrisi</span>
-          </div>
-
-          <!-- 3. Habitat & Enclosure -->
-          <div class="product-thumb-card" onclick="showProductDetail('habitat-enclosure')">
-            <div class="product-thumb-img">
-              <img src="assets/images/habitat_enclosure.jpg" alt="Kandang & Tempat Tinggal">
-            </div>
-            <span class="product-thumb-title">Kandang & Tempat Tinggal</span>
-          </div>
-
-          <!-- 4. Accessories -->
-          <div class="product-thumb-card" onclick="showProductDetail('accessories')">
-            <div class="product-thumb-img">
-              <img src="assets/images/pet_accessories.jpg" alt="Aksesoris Kandang">
-            </div>
-            <span class="product-thumb-title">Aksesoris Kandang</span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =================================================================
-       DUAL PROMO CARDS: EXOTIC PET GUIDE & JOIN OUR COMMUNITY
-       ================================================================= -->
-  <section class="dual-promo-section" id="learn">
-    <div class="container">
-      <div class="dual-cards-grid">
-        
-        <!-- Left Card: Learn & Grow / Exotic Pet Guide -->
-        <div class="promo-card">
-          <div class="promo-card-content">
-            <div class="section-tag">
-              <span class="sparkle">✦</span> Edukasi & Perawatan
-            </div>
-            <h3 class="promo-title">Panduan Satwa Eksotis</h3>
-            <p class="promo-desc">
-              Tips perawatan, menu pakan, tata kandang, dan panduan lengkap untuk merawat satwa kesayangan Anda.
+          <!-- Left Content -->
+          <div class="hero-content">
+            <h1 class="hero-headline">
+              Temukan <span class="sparkle">✦</span><br>
+              Sahabat Satwa Eksotis.
+            </h1>
+            <p class="hero-desc">
+              Jelajahi ragam satwa ramah keluarga, pelajari panduan perawatannya, dan temukan sahabat setia Anda bersama Bayoung Exopet.
             </p>
-            <button onclick="showGuidesModal('guide-musang')" class="btn-pill-action">
-              Baca Panduan Lengkap ➔
-            </button>
-          </div>
-
-          <div class="guide-visual-wrap">
-            <div class="guide-animal-avatar">
-              <img src="assets/images/guide_musang.jpg" alt="Panduan Musang Pandan">
-            </div>
-
-            <!-- Handwritten Speech Bubble Doodle -->
-            <div class="speech-bubble-doodle">
-              <span>Rawat<br>Baik,<br>Satwa<br>Bahagia</span>
-            </div>
-
-            <!-- Purple Book Icon Badge -->
-            <div class="guide-book-badge">
-              <svg viewBox="0 0 24 24">
-                <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Card: Join Our Community / Let's Stay Connected -->
-        <div class="promo-card" id="community">
-          <div class="promo-card-content">
-            <div class="section-tag">
-              <span class="sparkle">✦</span> Komunitas Pecinta Satwa
-            </div>
-            <h3 class="promo-title">Mari Terhubung Bersama!</h3>
-            <p class="promo-desc">
-              Bertemu sesama pemelihara satwa eksotis, berbagi pengalaman, dan saling belajar bersama.
-            </p>
-            <div class="promo-buttons-row">
-              <button onclick="inquireCommunity()" class="btn-primary" style="padding: 10px 20px; font-size: 0.88rem;">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/></svg>
-                Gabung Grup WhatsApp
+            <div class="hero-cta-group">
+              <a href="#/adopsi" onclick="showPage('adopsi'); return false;" class="btn-primary">
+                Lihat Satwa Adopsi
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <button onclick="showPage('komunitas')" class="btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                Gabung Komunitas
               </button>
-              <a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 10px 18px; font-size: 0.88rem;">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Ikuti Instagram
+            </div>
+          </div>
+
+          <!-- Right Visual (Musang Pandan Photo + Floating Badges) -->
+          <div class="hero-visual">
+            <div class="hero-image-wrapper">
+              <img src="assets/images/hero_musang.jpg" alt="Musang Pandan Bayoung Exopet" id="hero-main-img">
+              
+              <!-- Handwritten Annotation: Musang Pandan -->
+              <div class="hero-annotation">
+                <span class="annotation-text">Musang Pandan</span>
+                <svg class="annotation-arrow" viewBox="0 0 60 30" fill="none" stroke="currentColor">
+                  <path d="M10 20 Q 35 25, 48 8" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M42 6 L 48 8 L 47 15" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Floating Organic Badge Top Right -->
+            <div class="hero-badge-blob">
+              <span class="badge-sparkle">✦</span>
+              <span class="badge-text">Satwa Mungil<br>Bahagia<br>Nyata</span>
+              <span class="badge-paw">🐾</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Value Props (Kenapa Bayoung Exopet) -->
+      <section class="value-props-section">
+        <div class="container">
+          <div class="value-props-grid">
+            
+            <div class="value-prop-card">
+              <span class="value-prop-icon">🐾</span>
+              <h3 class="value-prop-title">Satwa Sehat & Jinak</h3>
+              <p class="value-prop-desc">Dirawat telaten dengan pakan bergizi, vitamin rutin, serta terlatih ramah berinteraksi dengan manusia.</p>
+            </div>
+
+            <div class="value-prop-card">
+              <span class="value-prop-icon">🪵</span>
+              <h3 class="value-prop-title">Wood Pellets Alami</h3>
+              <p class="value-prop-desc">100% serat kayu pinus murni tanpa kimia. Menyerap urin 3x lipat dan mengikat bau amonia seketika.</p>
+            </div>
+
+            <div class="value-prop-card">
+              <span class="value-prop-icon">🤝</span>
+              <h3 class="value-prop-title">Pendampingan Seumur Hidup</h3>
+              <p class="value-prop-desc">Bebas berkonsultasi seputar pola makan, kesehatan, dan perawatan harian bersama tim ahli kami.</p>
+            </div>
+
+            <div class="value-prop-card">
+              <span class="value-prop-icon">💜</span>
+              <h3 class="value-prop-title">1.200+ Sahabat Komunitas</h3>
+              <p class="value-prop-desc">Wadah silaturahmi pecinta satwa eksotis se-Indonesia untuk saling belajar dan berbagi pengalaman seru.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Room Shortcuts Section -->
+      <section class="rooms-shortcut-section">
+        <div class="container">
+          <div style="text-align: center; max-width: 650px; margin: 0 auto 36px;">
+            <div class="section-tag" style="justify-content: center;">
+              <span class="sparkle">✦</span> Jelajahi Ruang Bayoung
+            </div>
+            <h2 class="section-title">Temukan yang Anda Butuhkan</h2>
+            <p class="section-desc">Pilih ruang yang ingin Anda kunjungi untuk pengalaman yang lebih fokus dan nyaman.</p>
+          </div>
+
+          <div class="rooms-shortcut-grid">
+            
+            <!-- Room 1: Ragam Satwa -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Eksplorasi</span>
+                <h3 class="room-shortcut-title">Ragam Satwa Eksotis</h3>
+                <p class="room-shortcut-desc">Pelajari profil lengkap Musang Pandan, Berang-berang Cakar Kecil, Hamster Syrian, Kelinci Netherland Dwarf, dan fauna lainnya.</p>
+              </div>
+              <button onclick="showPage('ragam-satwa')" class="btn-primary" style="width: fit-content;">
+                Buka Ragam Satwa ➔
+              </button>
+            </div>
+
+            <!-- Room 2: Adopsi Satwa -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Siap Adopsi</span>
+                <h3 class="room-shortcut-title">Katalog Adopsi Satwa</h3>
+                <p class="room-shortcut-desc">Lihat ketersediaan satwa sehat hasil rawatan studio kami, lengkap dengan foto, usia, karakter, dan biaya adopsi transparan.</p>
+              </div>
+              <button onclick="showPage('adopsi')" class="btn-primary" style="width: fit-content;">
+                Buka Ruang Adopsi ➔
+              </button>
+            </div>
+
+            <!-- Room 3: Produk & Pelet Kayu -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Kebutuhan Kandang</span>
+                <h3 class="room-shortcut-title">Produk & Wood Pellets</h3>
+                <p class="room-shortcut-desc">Pelet kayu pinus penyerap bau super ampuh, pakan bergizi seimbang, kandang nyaman, dan aksesoris eksklusif Bayoung.</p>
+              </div>
+              <button onclick="showPage('produk')" class="btn-primary" style="width: fit-content;">
+                Buka Katalog Produk ➔
+              </button>
+            </div>
+
+            <!-- Room 4: Edukasi & Komunitas -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Edukasi & Teman</span>
+                <h3 class="room-shortcut-title">Edukasi & Komunitas</h3>
+                <p class="room-shortcut-desc">Panduan perawatan pemula, tanya jawab interaktif seputar satwa, serta akses langsung ke grup WhatsApp pemelihara.</p>
+              </div>
+              <button onclick="showPage('edukasi')" class="btn-primary" style="width: fit-content;">
+                Buka Ruang Edukasi ➔
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===============================================================
+         PAGE 2: RAGAM SATWA (#page-ragam-satwa)
+         =============================================================== -->
+    <div class="page-view" id="page-ragam-satwa">
+      
+      <!-- Page Header Banner -->
+      <section class="page-header-banner">
+        <div class="container">
+          <nav class="breadcrumb-nav">
+            <a href="#/beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+            <span>›</span>
+            <span>Ragam Satwa</span>
+          </nav>
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Ensiklopedia Satwa Eksotis
+          </div>
+          <h1 class="page-header-title">Ragam Satwa Ramah Keluarga</h1>
+          <p class="page-header-desc">
+            Mengenal lebih dekat karakteristik unik, pola makan alami, dan kebiasaan satwa eksotis yang legal, aman, dan menyenangkan untuk dipelihara di rumah.
+          </p>
+        </div>
+      </section>
+
+      <!-- Category Filter Avatars -->
+      <section style="margin-bottom: 48px;">
+        <div class="container">
+          <div class="our-world-bar">
+            <div class="world-intro">
+              <div class="world-tag">
+                <span style="color: var(--primary);">✦</span> Kategori Pilihan
+              </div>
+              <span class="world-subtitle">Klik kategori untuk langsung melihat satwa yang siap diadopsi:</span>
+            </div>
+
+            <div class="category-avatars">
+              <!-- 1. Musang -->
+              <div class="category-item" onclick="filterCategory('Musang')">
+                <div class="avatar-circle">
+                  <img src="assets/images/guide_musang.jpg" alt="Musang">
+                </div>
+                <span class="category-name">Musang</span>
+                <div class="category-arrow-btn">➔</div>
+              </div>
+
+              <!-- 2. Otter -->
+              <div class="category-item" onclick="filterCategory('Otter')">
+                <div class="avatar-circle">
+                  <img src="assets/images/otter.jpg" alt="Berang-berang">
+                </div>
+                <span class="category-name">Berang-berang</span>
+                <div class="category-arrow-btn">➔</div>
+              </div>
+
+              <!-- 3. Rodent -->
+              <div class="category-item" onclick="filterCategory('Rodent')">
+                <div class="avatar-circle">
+                  <img src="assets/images/hamster.jpg" alt="Hamster">
+                </div>
+                <span class="category-name">Hamster</span>
+                <div class="category-arrow-btn">➔</div>
+              </div>
+
+              <!-- 4. Rabbit -->
+              <div class="category-item" onclick="filterCategory('Rabbit')">
+                <div class="avatar-circle">
+                  <img src="assets/images/rabbit.jpg" alt="Kelinci">
+                </div>
+                <span class="category-name">Kelinci</span>
+                <div class="category-arrow-btn">➔</div>
+              </div>
+
+              <!-- 5. Other -->
+              <div class="category-item" onclick="filterCategory('Other')">
+                <div class="avatar-circle">
+                  <img src="assets/images/hedgehog.jpg" alt="Satwa Lainnya">
+                </div>
+                <span class="category-name">Lainnya</span>
+                <div class="category-arrow-btn">➔</div>
+              </div>
+            </div>
+
+            <button onclick="showPage('adopsi')" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem; flex-shrink: 0;">
+              Lihat Ruang Adopsi ➔
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Encyclopedia Profiles Grid -->
+      <section style="margin-bottom: 72px;">
+        <div class="container">
+          <div style="margin-bottom: 32px;">
+            <h2 class="section-title">Profil Mendalam Satwa Studio</h2>
+            <p class="section-desc">Pahami kebutuhan dasar setiap spesies sebelum memutuskan untuk menyambut mereka ke rumah Anda.</p>
+          </div>
+
+          <div class="encyclo-grid">
+            
+            <!-- Profile 1: Musang Pandan -->
+            <div class="encyclo-card">
+              <div class="encyclo-img-wrap">
+                <img src="assets/images/hero_musang.jpg" alt="Musang Pandan">
+              </div>
+              <div class="encyclo-body">
+                <h3 class="encyclo-title">Musang Pandan</h3>
+                <span class="encyclo-latin">Paradoxurus hermaphroditus</span>
+                <div class="encyclo-traits">
+                  <span>🐾 <strong>Karakter:</strong> Jinak total, manja, suka bertengger di pundak</span>
+                  <span>🍌 <strong>Pakan:</strong> Buah manis matang, pepaya, pisang & daging rebus</span>
+                  <span>🌿 <strong>Keunikan:</strong> Mengeluarkan aroma wangi pandan alami</span>
+                </div>
+                <p class="encyclo-desc">Musang Pandan anakan hasil rawatan tangan manusia memiliki ikatan emosional (bonding) yang sangat erat dengan pemiliknya. Sangat cocok bagi pecinta hewan yang menginginkan sahabat interaktif di dalam rumah.</p>
+                <button onclick="filterCategory('Musang')" class="btn-pill-action" style="width: 100%; justify-content: center;">
+                  Lihat Musang Siap Adopsi ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile 2: Asian Small-Clawed Otter -->
+            <div class="encyclo-card">
+              <div class="encyclo-img-wrap">
+                <img src="assets/images/otter.jpg" alt="Berang-berang Cakar Kecil">
+              </div>
+              <div class="encyclo-body">
+                <h3 class="encyclo-title">Berang-berang Cakar Kecil</h3>
+                <span class="encyclo-latin">Aonyx cinereus</span>
+                <div class="encyclo-traits">
+                  <span>🐾 <strong>Karakter:</strong> Sangat cerdas, aktif, vokal & suka menyapa</span>
+                  <span>🐟 <strong>Pakan:</strong> Ikan air tawar segar, udang & suplemen kalsium</span>
+                  <span>💧 <strong>Kebutuhan:</strong> Wajib memiliki bak mandi air bersih harian</span>
+                </div>
+                <p class="encyclo-desc">Berang-berang cakar kecil dikenal karena kecerdasannya yang tinggi dan sifat bermain air yang sangat menghibur. Memerlukan keeper yang memiliki komitmen waktu bermain dan sanitasi air yang baik.</p>
+                <button onclick="filterCategory('Otter')" class="btn-pill-action" style="width: 100%; justify-content: center;">
+                  Lihat Otter Siap Adopsi ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile 3: Hamster Syrian -->
+            <div class="encyclo-card">
+              <div class="encyclo-img-wrap">
+                <img src="assets/images/hamster.jpg" alt="Hamster Syrian">
+              </div>
+              <div class="encyclo-body">
+                <h3 class="encyclo-title">Hamster Syrian</h3>
+                <span class="encyclo-latin">Mesocricetus auratus</span>
+                <div class="encyclo-traits">
+                  <span>🐾 <strong>Karakter:</strong> Jinak, tenang, mudah dipegang, menggemaskan</span>
+                  <span>🌾 <strong>Pakan:</strong> Biji-bijian mix premium, pelet & sayur kering</span>
+                  <span>🏠 <strong>Kebutuhan:</strong> Satu ekor satu kandang (hewan soliter)</span>
+                </div>
+                <p class="encyclo-desc">Hamster Syrian memiliki ukuran tubuh yang pas di genggaman tangan dan sifat yang tidak mudah menggigit jika sudah jinak. Sangat ramah untuk pemula dan anak-anak dengan pengawasan orang tua.</p>
+                <button onclick="filterCategory('Rodent')" class="btn-pill-action" style="width: 100%; justify-content: center;">
+                  Lihat Hamster Siap Adopsi ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile 4: Netherland Dwarf -->
+            <div class="encyclo-card">
+              <div class="encyclo-img-wrap">
+                <img src="assets/images/rabbit.jpg" alt="Kelinci Netherland Dwarf">
+              </div>
+              <div class="encyclo-body">
+                <h3 class="encyclo-title">Kelinci Netherland Dwarf</h3>
+                <span class="encyclo-latin">Oryctolagus cuniculus</span>
+                <div class="encyclo-traits">
+                  <span>🐾 <strong>Karakter:</strong> Mungil, telinga tegak pendek, lincah binky</span>
+                  <span>🌱 <strong>Pakan:</strong> 80% Timothy Hay serat tinggi & pelet kelinci</span>
+                  <span>🪵 <strong>Alas:</strong> Kotak litter box dengan alas pelet kayu pinus</span>
+                </div>
+                <p class="encyclo-desc">Ras kelinci terkecil di dunia dengan mata bulat besar dan wajah imut. Bersih, tidak bersuara, dan mudah dilatih buang air di kotak kotoran (litter-trained) beralaskan wood pellets.</p>
+                <button onclick="filterCategory('Rabbit')" class="btn-pill-action" style="width: 100%; justify-content: center;">
+                  Lihat Kelinci Siap Adopsi ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile 5: African Pygmy Hedgehog -->
+            <div class="encyclo-card">
+              <div class="encyclo-img-wrap">
+                <img src="assets/images/hedgehog.jpg" alt="Landak Mini Afrika">
+              </div>
+              <div class="encyclo-body">
+                <h3 class="encyclo-title">Landak Mini Afrika</h3>
+                <span class="encyclo-latin">Atelerix albiventris</span>
+                <div class="encyclo-traits">
+                  <span>🐾 <strong>Karakter:</strong> Nokturnal, mandiri, menggulung diri saat kaget</span>
+                  <span>🐛 <strong>Pakan:</strong> Kibble kucing premium, ulat hongkong & jangkrik</span>
+                  <span>🎡 <strong>Kebutuhan:</strong> Roda putar senyap (silent wheel diameter 28cm)</span>
+                </div>
+                <p class="encyclo-desc">Peliharaan mungil yang unik dengan duri halus tanpa racun. Tidak berisik dan memiliki jadwal makan yang mandiri, cocok untuk Anda yang memiliki mobilitas kerja tinggi di siang hari.</p>
+                <button onclick="filterCategory('Other')" class="btn-pill-action" style="width: 100%; justify-content: center;">
+                  Lihat Satwa Eksotis Siap Adopsi ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile 6: Reptil & Hewan Eksotis Lainnya -->
+            <div class="encyclo-card">
+              <div class="encyclo-img-wrap">
+                <img src="assets/images/hero_musang.jpg" alt="Reptil & Eksotis Lainnya">
+              </div>
+              <div class="encyclo-body">
+                <h3 class="encyclo-title">Reptil & Fauna Eksotis</h3>
+                <span class="encyclo-latin">Exotic Pet Curated Collection</span>
+                <div class="encyclo-traits">
+                  <span>🐾 <strong>Karakter:</strong> Unik, tenang, perawatan minim bulu</span>
+                  <span>☀️ <strong>Kebutuhan:</strong> Lampu penghangat & kandang berventilasi</span>
+                  <span>🧪 <strong>Kesehatan:</strong> Terbebas dari jamur dan kutu sisik</span>
+                </div>
+                <p class="encyclo-desc">Koleksi reptil pilihan seperti gecko, kura-kura darat, dan eksotis lainnya yang telah lulus observasi kesehatan dan adaptasi pakan di studio Malang.</p>
+                <button onclick="filterCategory('Lainnya')" class="btn-pill-action" style="width: 100%; justify-content: center;">
+                  Lihat Koleksi Eksotis ➔
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===============================================================
+         PAGE 3: ADOPSI (#page-adopsi)
+         =============================================================== -->
+    <div class="page-view" id="page-adopsi">
+      
+      <!-- Page Header Banner -->
+      <section class="page-header-banner">
+        <div class="container">
+          <nav class="breadcrumb-nav">
+            <a href="#/beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+            <span>›</span>
+            <span>Adopsi Satwa</span>
+          </nav>
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Ruang Adopsi Resmi
+          </div>
+          <h1 class="page-header-title">Katalog Satwa Siap Diadopsi</h1>
+          <p class="page-header-desc">
+            Seluruh satwa telah melewati masa karantina dan pemantauan kesehatan intensif di studio Pakisaji, Malang. Sehat prima, jinak, dan siap menjadi bagian dari keluarga Anda.
+          </p>
+        </div>
+      </section>
+
+      <!-- Filter Bar for Adoption -->
+      <section style="margin-bottom: 24px;">
+        <div class="container">
+          <div class="filter-bar-row">
+            
+            <!-- Category Tabs -->
+            <div class="filter-pills-group">
+              <button class="filter-pill-btn active" data-animal-cat="Semua" onclick="filterAdoptionCategory('Semua')">Semua Satwa</button>
+              <button class="filter-pill-btn" data-animal-cat="Musang" onclick="filterAdoptionCategory('Musang')">🐾 Musang</button>
+              <button class="filter-pill-btn" data-animal-cat="Otter" onclick="filterAdoptionCategory('Otter')">💧 Berang-berang</button>
+              <button class="filter-pill-btn" data-animal-cat="Rodent" onclick="filterAdoptionCategory('Rodent')">🐹 Hamster</button>
+              <button class="filter-pill-btn" data-animal-cat="Rabbit" onclick="filterAdoptionCategory('Rabbit')">🐰 Kelinci</button>
+              <button class="filter-pill-btn" data-animal-cat="Lainnya" onclick="filterAdoptionCategory('Lainnya')">✨ Lainnya</button>
+            </div>
+
+            <!-- Search Quick Button -->
+            <button onclick="showSearchModal()" class="btn-pill-action" style="font-size: 0.85rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Cari Nama Satwa
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Adoption Grid -->
+      <section style="margin-bottom: 64px;">
+        <div class="container">
+          <div class="adoption-grid" id="adoption-grid">
+            <!-- Dynamically populated by renderAdoptionGrid() from ANIMALS_DATA -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Adoption Procedure 4 Steps -->
+      <section style="background: #faf7ff; padding: 56px 0; border-radius: 32px; margin-bottom: 72px;">
+        <div class="container">
+          <div style="text-align: center; max-width: 650px; margin: 0 auto 40px;">
+            <div class="section-tag" style="justify-content: center;">
+              <span class="sparkle">✦</span> Prosedur Adopsi Bertanggung Jawab
+            </div>
+            <h2 class="section-title">4 Langkah Mudah Mengadopsi</h2>
+            <p class="section-desc">Proses aman, transparan, dan mengutamakan kenyamanan satwa kesayangan Anda.</p>
+          </div>
+
+          <div class="value-props-grid">
+            <div class="value-prop-card" style="background: #ffffff;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">01</div>
+              <h3 class="value-prop-title">Pilih & Konsultasi</h3>
+              <p class="value-prop-desc">Pilih satwa idaman Anda, lalu klik tombol WhatsApp untuk konsultasi karakter, pola makan, dan ketersediaan.</p>
+            </div>
+
+            <div class="value-prop-card" style="background: #ffffff;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">02</div>
+              <h3 class="value-prop-title">Video Call / Studio</h3>
+              <p class="value-prop-desc">Lihat kondisi satwa secara live melalui panggilan video atau berkunjung langsung ke studio kami di Pakisaji Malang.</p>
+            </div>
+
+            <div class="value-prop-card" style="background: #ffffff;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">03</div>
+              <h3 class="value-prop-title">Persiapan Kandang</h3>
+              <p class="value-prop-desc">Siapkan kandang yang higienis dengan alas pelet kayu (wood pellets) berkualitas agar satwa tidak stres saat tiba.</p>
+            </div>
+
+            <div class="value-prop-card" style="background: #ffffff;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">04</div>
+              <h3 class="value-prop-title">Serah Terima & Garansi</h3>
+              <p class="value-prop-desc">Satwa dikirim via ekspedisi khusus hewan atau diambil langsung dengan garansi sehat dan pendampingan seumur hidup.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===============================================================
+         PAGE 4: PRODUK (#page-produk)
+         =============================================================== -->
+    <div class="page-view" id="page-produk">
+      
+      <!-- Page Header Banner -->
+      <section class="page-header-banner">
+        <div class="container">
+          <nav class="breadcrumb-nav">
+            <a href="#/beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+            <span>›</span>
+            <span>Produk & Perlengkapan</span>
+          </nav>
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Perlengkapan & Nutrisi Pilihan
+          </div>
+          <h1 class="page-header-title">Produk & Wood Pellets Kualitas Terbaik</h1>
+          <p class="page-header-desc">
+            Alas kandang alami bebas bau, pakan bernutrisi tinggi, dan perlengkapan higienis yang terbukti aman dan dipakai langsung di studio Bayoung Exopet.
+          </p>
+        </div>
+      </section>
+
+      <!-- Wood Pellets Showcase Section -->
+      <section style="margin-bottom: 56px;">
+        <div class="container">
+          <div class="products-wrapper">
+            
+            <div class="products-intro-col">
+              <div class="section-tag">
+                <span class="sparkle">✦</span> Produk Unggulan Studio
+              </div>
+              <h2 class="section-title">Bayoung Wood Pellets Premium</h2>
+              <p class="section-desc">
+                Inovasi alas kandang alami 100% serat kayu pinus murni. Efektif mengikat bau amonia, menyerap cairan seketika, dan tidak berdebu sehingga aman bagi sistem pernapasan satwa eksotis Anda.
+              </p>
+              
+              <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
+                  <span>✔</span> Daya Serap Cairan Hingga 3x Lipat
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
+                  <span>✔</span> Resin Pinus Alami Pengikat Bau Amonia
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
+                  <span>✔</span> Ultra Rendah Debu (Dust-Free 99%)
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
+                  <span>✔</span> Ramah Lingkungan & Dapat Didaur Ulang Jadi Kompos
+                </div>
+              </div>
+
+              <div style="margin-top: 28px;">
+                <button onclick="showProductDetail('wood-pellets')" class="btn-primary">
+                  Pesan Wood Pellets via WA ➔
+                </button>
+              </div>
+            </div>
+
+            <div class="products-showcase-col" onclick="showProductDetail('wood-pellets')" style="cursor: pointer;">
+              <div class="wood-pellet-image-box">
+                <img src="assets/images/wood_pellets_bag.jpg" alt="Pelet Kayu Bayoung Exopet">
+                <div class="pellet-callout">
+                  <span class="pellet-callout-text">Pelet Kayu (Wood Pellets)<br>~ Kualitas Terbaik ~</span>
+                  <svg class="pellet-callout-arrow" viewBox="0 0 50 30" fill="none" stroke="currentColor">
+                    <path d="M40 5 Q 25 15, 12 24" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M18 25 L 12 24 L 14 18" stroke-width="2.2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Filter Pills for Products -->
+      <section style="margin-bottom: 24px;">
+        <div class="container">
+          <div class="filter-bar-row">
+            <div class="filter-pills-group">
+              <button class="filter-pill-btn active" data-prod-cat="Semua" onclick="filterProductCategory('Semua')">Semua Produk</button>
+              <button class="filter-pill-btn" data-prod-cat="Bedding" onclick="filterProductCategory('Bedding')">🪵 Alas Kandang (Litter)</button>
+              <button class="filter-pill-btn" data-prod-cat="Supplements" onclick="filterProductCategory('Supplements')">🥑 Pakan & Nutrisi</button>
+              <button class="filter-pill-btn" data-prod-cat="Housing" onclick="filterProductCategory('Housing')">🏠 Kandang & Furniture</button>
+              <button class="filter-pill-btn" data-prod-cat="Bowls" onclick="filterProductCategory('Bowls')">🥣 Aksesoris Kandang</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full Products Grid -->
+      <section style="margin-bottom: 72px;">
+        <div class="container">
+          <div class="full-products-grid" id="products-full-grid">
+            <!-- Dynamically populated by renderFullProductsGrid() from PRODUCTS_DATA -->
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===============================================================
+         PAGE 5: EDUKASI (#page-edukasi)
+         =============================================================== -->
+    <div class="page-view" id="page-edukasi">
+      
+      <!-- Page Header Banner -->
+      <section class="page-header-banner">
+        <div class="container">
+          <nav class="breadcrumb-nav">
+            <a href="#/beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+            <span>›</span>
+            <span>Edukasi</span>
+          </nav>
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Pusat Edukasi & Perawatan
+          </div>
+          <h1 class="page-header-title">Panduan Lengkap Merawat Satwa</h1>
+          <p class="page-header-desc">
+            Kumpulan artikel dan panduan praktis dari pengalaman nyata bertahun-tahun di studio Bayoung Exopet. Memastikan satwa Anda sehat, bahagia, dan berumur panjang.
+          </p>
+        </div>
+      </section>
+
+      <!-- Educational Guides Grid -->
+      <section style="margin-bottom: 64px;">
+        <div class="container">
+          
+          <div class="rooms-shortcut-grid">
+            
+            <!-- Guide 1: Musang Pandan -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Panduan Musang</span>
+                <h3 class="room-shortcut-title">Cara Merawat Musang Pandan agar Jinak Total</h3>
+                <p class="room-shortcut-desc">Pelajari pola pakan bernutrisi buah & protein, cara memotong kuku yang benar, melatih musang menjadi shoulder-pet, dan menjaga aroma pandan alaminya.</p>
+              </div>
+              <button onclick="showGuidesModal('guide-musang')" class="btn-primary" style="width: fit-content;">
+                Baca Panduan Musang ➔
+              </button>
+            </div>
+
+            <!-- Guide 2: Wood Pellets -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Sanitasi Kandang</span>
+                <h3 class="room-shortcut-title">Mengapa Pelet Kayu Jauh Lebih Sehat dari Serbuk Kayu?</h3>
+                <p class="room-shortcut-desc">Mengetahui bahaya debu serbuk gergaji terhadap saluran pernapasan satwa eksotis serta keunggulan wood pellets pinus dalam menyerap cairan dan bau.</p>
+              </div>
+              <button onclick="showGuidesModal('guide-wood-pellets')" class="btn-primary" style="width: fit-content;">
+                Baca Artikel Pelet Kayu ➔
+              </button>
+            </div>
+
+            <!-- Guide 3: Berang-berang (Otter) -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Panduan Otter</span>
+                <h3 class="room-shortcut-title">Komitmen dan Perawatan Berang-berang Cakar Kecil</h3>
+                <p class="room-shortcut-desc">Kebutuhan kolam air mandi harian, menu ikan segar berprotein tinggi, suplemen kalsium, dan cara melatih stimulasi kecerdasan bermain.</p>
+              </div>
+              <button onclick="showGuidesModal('guide-otter')" class="btn-primary" style="width: fit-content;">
+                Baca Tips Otter ➔
+              </button>
+            </div>
+
+            <!-- Guide 4: Kelinci & Hamster -->
+            <div class="room-shortcut-card">
+              <div>
+                <span class="room-shortcut-badge">✦ Hewan Mungil</span>
+                <h3 class="room-shortcut-title">Tata Cara Merawat Kelinci Kerdil & Hamster Syrian</h3>
+                <p class="room-shortcut-desc">Larangan memandikan kelinci dengan air, pentingnya serat timothy hay, penataan kandang soliter, dan menjaga suhu ruangan tetap sejuk.</p>
+              </div>
+              <button onclick="inquireConsultation()" class="btn-primary" style="width: fit-content;">
+                Konsultasi Perawatan via WA ➔
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FAQ Accordion Section -->
+      <section style="margin-bottom: 72px;">
+        <div class="container">
+          <div style="text-align: center; max-width: 650px; margin: 0 auto 36px;">
+            <div class="section-tag" style="justify-content: center;">
+              <span class="sparkle">✦</span> Tanya Jawab
+            </div>
+            <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+            <p class="section-desc">Jawaban singkat seputar legalitas, pengiriman, dan pemeliharaan satwa eksotis.</p>
+          </div>
+
+          <div class="faq-list">
+            
+            <div class="faq-item active">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Apakah memelihara Musang Pandan dan Berang-berang legal di Indonesia?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Ya, Musang Pandan (<em>Paradoxurus hermaphroditus</em>) dan Berang-berang Cakar Kecil (<em>Aonyx cinereus</em>) adalah satwa yang legal untuk dipelihara di Indonesia dan bukan termasuk satwa yang dilarang/dilindungi secara mutlak dalam lampiran perundang-undangan satwa liar tertentu. Seluruh satwa di Bayoung Exopet berasal dari penangkaran dan rawatan studio yang aman dan sah.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Apakah satwa bisa dikirim ke luar kota atau luar pulau Jawa?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Bisa. Kami bekerja sama dengan jasa ekspedisi satwa terpercaya (seperti KIB Cepat, LNP, dan kurir hewan berizin) yang memastikan satwa mendapatkan sirkulasi udara baik, pakan, dan air minum selama perjalanan. Pengiriman dilengkapi dengan garansi satwa sehat sampai di tujuan.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Saya seorang pemula, apakah saya akan diajari cara merawatnya?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Tentu saja! Bayoung Exopet mengusung prinsip pendampingan seumur hidup. Setelah adopsi, Anda bisa berkonsultasi kapan saja via WhatsApp mengenai menu pakan, adaptasi lingkungan, jadwal potong kuku, hingga perawatan kesehatan dasar satwa Anda.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Mengapa kandang hewan menjadi tidak berbau dengan wood pellets?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Wood pellets Bayoung terbuat dari serat kayu pinus alami yang memiliki kandungan getah/resin alami pengikat gas amonia. Saat cairan urin menyentuh pellet, butiran langsung mengembang dan mengeringkannya secara seketika sehingga bau tidak sempat menguap ke udara ruangan.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===============================================================
+         PAGE 6: KOMUNITAS (#page-komunitas)
+         =============================================================== -->
+    <div class="page-view" id="page-komunitas">
+      
+      <!-- Page Header Banner -->
+      <section class="page-header-banner">
+        <div class="container">
+          <nav class="breadcrumb-nav">
+            <a href="#/beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+            <span>›</span>
+            <span>Komunitas</span>
+          </nav>
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Keluarga Besar Bayoung
+          </div>
+          <h1 class="page-header-title">Mari Terhubung Bersama Pecinta Satwa</h1>
+          <p class="page-header-desc">
+            Lebih dari 1.200 pemelihara satwa eksotis saling bertukar pengalaman, tips perawatan harian, dan cerita menggemaskan setiap hari di komunitas Bayoung Exopet.
+          </p>
+        </div>
+      </section>
+
+      <!-- Promo Community Card -->
+      <section style="margin-bottom: 56px;">
+        <div class="container">
+          <div class="dual-cards-grid" style="grid-template-columns: 1fr;">
+            
+            <div class="promo-card" style="padding: 40px 48px;">
+              <div class="promo-card-content" style="max-width: 600px;">
+                <div class="section-tag">
+                  <span class="sparkle">✦</span> Grup WhatsApp Resmi
+                </div>
+                <h2 class="promo-title" style="font-size: 2.2rem;">Bergabung di Grup WhatsApp Bayoung Exopet</h2>
+                <p class="promo-desc" style="font-size: 1.05rem;">
+                  Dapatkan akses prioritas ke informasi satwa adopsi yang baru lahir, sesi tanya jawab perawatan gratis langsung bersama tim studio, info lelang perlengkapan, dan silaturahmi sesama keeper eksotis se-Indonesia.
+                </p>
+                <div class="promo-buttons-row" style="margin-top: 24px;">
+                  <button onclick="inquireCommunity()" class="btn-primary" style="padding: 14px 28px; font-size: 1rem;">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/></svg>
+                    Gabung Grup WhatsApp Sekarang
+                  </button>
+                  <a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 14px 24px; font-size: 1rem;">
+                    Ikuti Instagram
+                  </a>
+                </div>
+              </div>
+
+              <div class="community-visual-wrap">
+                <div class="phone-mockup-wrap">
+                  <img src="assets/images/community_phone.jpg" alt="Instagram Bayoung Exopet Feed">
+                </div>
+                <div class="community-members-pill">
+                  <span>1.200+</span> Anggota
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Keeper Stories / Testimonials -->
+      <section style="margin-bottom: 72px;">
+        <div class="container">
+          <div style="text-align: center; max-width: 650px; margin: 0 auto 36px;">
+            <div class="section-tag" style="justify-content: center;">
+              <span class="sparkle">✦</span> Cerita Pengadopsi
+            </div>
+            <h2 class="section-title">Kisah Bahagia Bersama Satwa Bayoung</h2>
+            <p class="section-desc">Pengalaman nyata para keeper yang telah menyambut sahabat eksotis ke rumah mereka.</p>
+          </div>
+
+          <div class="value-props-grid" style="grid-template-columns: repeat(3, 1fr);">
+            
+            <div class="value-prop-card">
+              <div style="color: #f59e0b; margin-bottom: 8px;">★★★★★</div>
+              <p style="font-size: 0.95rem; color: var(--text-main); font-style: italic; margin-bottom: 16px; line-height: 1.6;">
+                "Adopsi Musang Pandan baby dari Bayoung benar-benar jinak total! Dari hari pertama sampai sekarang suka tidur di pundak saya. Mas Abbiyu juga sabar banget ngebimbing pakan hariannya."
+              </p>
+              <div style="font-weight: 800; color: var(--primary);">Dimas Prasetyo</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Keeper Musang Pandan — Surabaya</div>
+            </div>
+
+            <div class="value-prop-card">
+              <div style="color: #f59e0b; margin-bottom: 8px;">★★★★★</div>
+              <p style="font-size: 0.95rem; color: var(--text-main); font-style: italic; margin-bottom: 16px; line-height: 1.6;">
+                "Wood pellets-nya juara banget! Dulu kandang berang-berang dan kelinci sering pesing, begitu ganti pelet kayu Bayoung langsung netral baunya dan gampang dibersihkan."
+              </p>
+              <div style="font-weight: 800; color: var(--primary);">drh. Rina Wulandari</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Pecinta Hewan Eksotis — Malang</div>
+            </div>
+
+            <div class="value-prop-card">
+              <div style="color: #f59e0b; margin-bottom: 8px;">★★★★★</div>
+              <p style="font-size: 0.95rem; color: var(--text-main); font-style: italic; margin-bottom: 16px; line-height: 1.6;">
+                "Pengiriman ke Bandung aman dan selamat. Kondisi otter lincah, aktif berenang, dan makannya lahap. Senang sekali bertransaksi di studio yang terpercaya seperti ini."
+              </p>
+              <div style="font-weight: 800; color: var(--primary);">Fajar Ramadhan</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Keeper Otter — Bandung</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===============================================================
+         PAGE 7: TENTANG KAMI (#page-tentang-kami)
+         =============================================================== -->
+    <div class="page-view" id="page-tentang-kami">
+      
+      <!-- Page Header Banner -->
+      <section class="page-header-banner">
+        <div class="container">
+          <nav class="breadcrumb-nav">
+            <a href="#/beranda" onclick="showPage('beranda'); return false;">Beranda</a>
+            <span>›</span>
+            <span>Tentang Kami</span>
+          </nav>
+          <div class="section-tag">
+            <span class="sparkle">✦</span> Profil Studio & Dedikasi
+          </div>
+          <h1 class="page-header-title">Tentang Bayoung Exopet</h1>
+          <p class="page-header-desc">
+            Berawal dari ketulusan cinta terhadap satwa eksotis lokal, berdedikasi membangun ekosistem pemeliharaan satwa yang legal, sehat, dan mengedukasi di Malang, Jawa Timur.
+          </p>
+        </div>
+      </section>
+
+      <!-- Founder & Story Grid -->
+      <section style="margin-bottom: 64px;">
+        <div class="container">
+          <div class="about-founder-grid">
+            
+            <div class="about-founder-img">
+              <img src="assets/images/hero_musang.jpg" alt="Abbiyu Nafis Alwan di Studio Bayoung Exopet">
+            </div>
+
+            <div>
+              <div class="section-tag">
+                <span class="sparkle">✦</span> Kisah Pendiri
+              </div>
+              <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 16px;">Kecintaan yang Menjadi Dedikasi</h2>
+              <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+                <strong>Bayoung Exopet</strong> didirikan oleh <strong>Abbiyu Nafis Alwan</strong> di Pakisaji, Kabupaten Malang. Bermula dari kecintaan mendalam terhadap fauna eksotis nusantara—terutama Musang Pandan dan Berang-berang—kami melihat bahwa banyak orang ingin memelihara satwa unik namun kekurangan akses terhadap satwa yang jinak, sehat, serta panduan perawatan yang benar.
+              </p>
+              <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
+                Di Bayoung Exopet, satwa bukanlah komoditas semata, melainkan keluarga. Setiap anakan satwa dirawat telaten dengan asupan nutrisi lengkap, dilatih interaksi sejak dini, dan hanya diserahkan kepada calon pemelihara yang siap berkomitmen. Kami juga memproduksi sendiri <strong>Bayoung Wood Pellets</strong> untuk memberikan solusi alas kandang terbaik yang bebas bau dan ramah lingkungan.
+              </p>
+              
+              <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <a href="https://wa.me/6281252517813?text=Halo%20Mas%20Abbiyu,%20saya%20ingin%20berkenalan%20dan%20tanya%20seputar%20Bayoung%20Exopet." target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  Hubungi Mas Abbiyu (WhatsApp)
+                </a>
+                <button onclick="showPage('adopsi')" class="btn-secondary">
+                  Lihat Satwa Siap Adopsi
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 Core Pillars -->
+      <section style="margin-bottom: 64px;">
+        <div class="container">
+          <div style="text-align: center; max-width: 650px; margin: 0 auto 36px;">
+            <div class="section-tag" style="justify-content: center;">
+              <span class="sparkle">✦</span> Prinsip Utama
+            </div>
+            <h2 class="section-title">3 Pilar Filosofi Kami</h2>
+            <p class="section-desc">Nilai dasar yang kami pegang teguh dalam setiap aspek pelayanan studio.</p>
+          </div>
+
+          <div class="pillars-grid">
+            
+            <div class="pillar-card">
+              <div style="font-size: 2.2rem; margin-bottom: 12px;">🐾</div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">Kesejahteraan Satwa (Animal Welfare)</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                Kesehatan dan kenyamanan satwa adalah prioritas mutlak. Seluruh satwa mendapatkan pakan segar berkualitas, vitamin, dan interaksi yang cukup agar terhindar dari stres.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div style="font-size: 2.2rem; margin-bottom: 12px;">📚</div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">Edukasi Berkelanjutan</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                Kami tidak melepas satwa begitu saja. Kami mendampingi calon keeper dengan edukasi mendalam serta konsultasi gratis seumur hidup agar satwa terawat dengan sempurna.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div style="font-size: 2.2rem; margin-bottom: 12px;">🌿</div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">Kebersihan Alami & Ekologis</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                Melalui produk wood pellets 100% serat pinus murni, kami menghadirkan lingkungan kandang yang bebas bau amonia tanpa bahan kimia sintetis yang berbahaya.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Studio Location & Visit Banner -->
+      <section style="margin-bottom: 72px;">
+        <div class="container">
+          <div class="studio-info-banner">
+            <div class="studio-info-content">
+              <div style="display: inline-block; background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 700; margin-bottom: 12px;">
+                📍 Kunjungan Studio
+              </div>
+              <h3>Kunjungi Studio Bayoung Exopet di Malang</h3>
+              <p>
+                <strong>Alamat:</strong> WJHG+2PQ, Jl. Raya Segenggeng, Wonokerso, Kec. Pakisaji, Kabupaten Malang, Jawa Timur 65162<br>
+                <strong>Jam Buka:</strong> Setiap hari, pukul 09.00 - 20.00 WIB<br>
+                <em>*Untuk kenyamanan dan penjadwalan keeper, harap konfirmasi janji temu via WhatsApp terlebih dahulu sebelum datang ke studio.</em>
+              </p>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; flex-shrink: 0;">
+              <a href="https://maps.google.com/?q=Jl.+Raya+Segenggeng,+Wonokerso,+Kec.+Pakisaji,+Kabupaten+Malang,+Jawa+Timur+65162" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="background: #ffffff; color: var(--primary); border: none; font-weight: 800;">
+                Buka di Google Maps ➔
+              </a>
+              <a href="https://wa.me/6281252517813?text=Halo%20Bayoung%20Exopet,%20saya%20ingin%20membuat%20janji%20temu%20kunjungan%20ke%20studio." target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: #a855f7; border: none;">
+                Buat Janji Kunjungan
               </a>
             </div>
           </div>
-
-          <div class="community-visual-wrap">
-            <div class="phone-mockup-wrap">
-              <img src="assets/images/community_phone.jpg" alt="Instagram Bayoung Exopet Feed">
-            </div>
-
-            <!-- Floating 1.2k+ Members Pill -->
-            <div class="community-members-pill">
-              <span>1.200+</span> Anggota
-            </div>
-          </div>
         </div>
+      </section>
 
-      </div>
     </div>
-  </section>
 
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- =================================================================
-       FOOTER
+       GLOBAL FOOTER (AT THE BOTTOM OF CURRENT PAGE)
        ================================================================= -->
-  <footer class="site-footer" id="about">
+  <footer class="site-footer">
     <div class="container">
       
       <div class="footer-top-grid">
@@ -518,7 +1089,7 @@
             </div>
           </div>
           <p class="footer-desc">
-            Studio exotic pet, brand edukasi, dan penyedia wood pellets premium terpercaya di Malang, Jawa Timur.
+            Studio satwa eksotis, brand edukasi, dan penyedia wood pellets premium terpercaya di Malang, Jawa Timur.
           </p>
           <div class="footer-address">
             <span>📍</span>
@@ -526,21 +1097,22 @@
           </div>
         </div>
 
-        <!-- Column 2: Quick Links -->
+        <!-- Column 2: Quick Links (SPA Navigation) -->
         <div>
-          <h4 class="footer-col-title">Tautan Cepat</h4>
+          <h4 class="footer-col-title">Navigasi Ruang</h4>
           <ul class="footer-links-list">
-            <li><a href="#home" class="footer-link">Beranda</a></li>
-            <li><a href="#animals" class="footer-link">Ragam Satwa</a></li>
-            <li><a href="#adoption" class="footer-link">Adopsi Satwa</a></li>
-            <li><a href="#products" class="footer-link">Produk & Perlengkapan</a></li>
+            <li><a href="#/beranda" onclick="showPage('beranda'); return false;" class="footer-link">Beranda</a></li>
+            <li><a href="#/ragam-satwa" onclick="showPage('ragam-satwa'); return false;" class="footer-link">Ragam Satwa</a></li>
+            <li><a href="#/adopsi" onclick="showPage('adopsi'); return false;" class="footer-link">Adopsi Satwa</a></li>
+            <li><a href="#/produk" onclick="showPage('produk'); return false;" class="footer-link">Produk & Perlengkapan</a></li>
           </ul>
         </div>
 
         <!-- Column 3: Learn -->
         <div>
-          <h4 class="footer-col-title">Edukasi</h4>
+          <h4 class="footer-col-title">Edukasi & Info</h4>
           <ul class="footer-links-list">
+            <li><a href="#/edukasi" onclick="showPage('edukasi'); return false;" class="footer-link">Pusat Edukasi</a></li>
             <li><a href="javascript:void(0)" onclick="showGuidesModal('guide-musang')" class="footer-link">Panduan Musang</a></li>
             <li><a href="javascript:void(0)" onclick="showGuidesModal('guide-wood-pellets')" class="footer-link">Artikel Pelet Kayu</a></li>
             <li><a href="javascript:void(0)" onclick="showGuidesModal('guide-otter')" class="footer-link">Tips Berang-berang</a></li>
@@ -551,10 +1123,10 @@
         <div>
           <h4 class="footer-col-title">Komunitas</h4>
           <ul class="footer-links-list">
+            <li><a href="#/komunitas" onclick="showPage('komunitas'); return false;" class="footer-link">Ruang Komunitas</a></li>
             <li><a href="javascript:void(0)" onclick="inquireCommunity()" class="footer-link">Grup WhatsApp</a></li>
-            <li><a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@bayoungexopet?_r=1&_t=ZS-99meC0q93Ga" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok</a></li>
-            <li><a href="https://www.facebook.com/share/19KmGNmRGB/" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a></li>
+            <li><a href="https://www.instagram.com/bayoung.exopet?stkn=MTFyeWxieWpqbjZjOA==" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram Studio</a></li>
+            <li><a href="https://www.tiktok.com/@bayoungexopet?_r=1&_t=ZS-99meC0q93Ga" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok Resmi</a></li>
           </ul>
         </div>
 
@@ -562,9 +1134,9 @@
         <div>
           <h4 class="footer-col-title">Tentang Kami</h4>
           <ul class="footer-links-list" style="margin-bottom: 20px;">
-            <li><a href="javascript:void(0)" onclick="showLocationModal()" class="footer-link">Kisah & Pendiri</a></li>
-            <li><a href="javascript:void(0)" onclick="showAllProductsModal()" class="footer-link">Layanan Kami</a></li>
-            <li><a href="javascript:void(0)" onclick="showLocationModal()" class="footer-link">Hubungi Studio</a></li>
+            <li><a href="#/tentang-kami" onclick="showPage('tentang-kami'); return false;" class="footer-link">Kisah Pendiri</a></li>
+            <li><a href="#/tentang-kami" onclick="showPage('tentang-kami'); return false;" class="footer-link">Lokasi Studio Malang</a></li>
+            <li><a href="https://wa.me/6281252517813" target="_blank" rel="noopener noreferrer" class="footer-link">Kontak WhatsApp</a></li>
           </ul>
 
           <div class="footer-social-box">

@@ -591,20 +591,10 @@ function slideAdoptionCarousel(direction) {
   }
 }
 
-// Filter Animals by Category (from "Our World" Bar)
+// Filter Animals by Category (from "Ragam Satwa" Bar)
 function filterCategory(categoryName) {
-  if (categoryName === "All") {
-    // Show all in modal or scroll
-    showAllAnimalsModal();
-    return;
-  }
-  
-  const matches = ANIMALS_DATA.filter(a => a.category.toLowerCase() === categoryName.toLowerCase());
-  if (matches.length > 0) {
-    showAnimalDetail(matches[0].id);
-  } else {
-    inquireConsultation();
-  }
+  showPage('adopsi');
+  filterAdoptionCategory(categoryName);
 }
 
 // View All Animals Modal
@@ -706,6 +696,13 @@ function toggleMobileMenu() {
   }
 }
 
+function closeMobileMenu() {
+  const nav = document.getElementById("main-nav");
+  if (nav && window.innerWidth <= 840) {
+    nav.style.display = "";
+  }
+}
+
 // Close modal on escape key or clicking backdrop
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
@@ -717,15 +714,127 @@ if (modalOverlay) {
   });
 }
 
+// FAQ Accordion Toggle
+function toggleFaq(button) {
+  const item = button.closest('.faq-item');
+  if (item) {
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) {
+      item.classList.add('active');
+    }
+  }
+}
+
 // ===================================================================
-// DYNAMIC LIVE CATALOG RENDERING (Connected to Telegram CMS & API)
+// DEDICATED PAGE / RUANG ROUTER (SPA HASH ROUTING)
 // ===================================================================
+
+const VALID_PAGES = ['beranda', 'ragam-satwa', 'adopsi', 'produk', 'edukasi', 'komunitas', 'tentang-kami'];
+
+function getPageFromHash() {
+  const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase().trim();
+  if (VALID_PAGES.includes(hash)) return hash;
+  if (hash === 'home' || hash === '') return 'beranda';
+  if (hash === 'animals') return 'ragam-satwa';
+  if (hash === 'adoption') return 'adopsi';
+  if (hash === 'products') return 'produk';
+  if (hash === 'learn') return 'edukasi';
+  if (hash === 'community') return 'komunitas';
+  if (hash === 'about') return 'tentang-kami';
+  return 'beranda';
+}
+
+function showPage(pageId, updateUrl = true) {
+  if (!VALID_PAGES.includes(pageId)) pageId = 'beranda';
+
+  // 1. Hide all pages, show target page
+  document.querySelectorAll('.page-view').forEach(p => {
+    p.classList.remove('page-active');
+  });
+
+  const targetPage = document.getElementById(`page-${pageId}`);
+  if (targetPage) {
+    targetPage.classList.add('page-active');
+  }
+
+  // 2. Update active nav link (Desktop & Mobile)
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const pageAttr = link.getAttribute('data-page');
+    if (pageAttr === pageId) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  // 3. Update URL hash
+  if (updateUrl) {
+    history.pushState(null, '', `#/` + pageId);
+  }
+
+  // 4. Smooth scroll to top
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // 5. Close mobile menu
+  closeMobileMenu();
+
+  // 6. Refresh grids when visiting specific pages
+  if (pageId === 'adopsi') renderAdoptionGrid();
+  if (pageId === 'produk') renderFullProductsGrid();
+}
+
+window.addEventListener('hashchange', () => {
+  const page = getPageFromHash();
+  showPage(page, false);
+});
+
+// ===================================================================
+// DYNAMIC LIVE CATALOG RENDERING & FILTERING
+// ===================================================================
+
+let currentAdoptionCategory = 'Semua';
+function filterAdoptionCategory(cat) {
+  currentAdoptionCategory = cat;
+  document.querySelectorAll('.filter-pill-btn[data-animal-cat]').forEach(btn => {
+    if (btn.getAttribute('data-animal-cat') === cat) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  renderAdoptionGrid();
+}
 
 function renderAdoptionGrid() {
   const grid = document.getElementById("adoption-grid");
   if (!grid || !Array.isArray(ANIMALS_DATA) || ANIMALS_DATA.length === 0) return;
 
-  grid.innerHTML = ANIMALS_DATA.map(a => {
+  let filtered = ANIMALS_DATA;
+  if (currentAdoptionCategory && currentAdoptionCategory !== 'Semua') {
+    filtered = ANIMALS_DATA.filter(a => {
+      const cat = (a.category || '').toLowerCase();
+      const target = currentAdoptionCategory.toLowerCase();
+      if (target === 'lainnya') {
+        return !cat.includes('musang') && !cat.includes('otter') && !cat.includes('berang') && !cat.includes('hamster') && !cat.includes('kelinci') && !cat.includes('rabbit');
+      }
+      return cat.includes(target) || (target === 'berang-berang' && cat.includes('otter'));
+    });
+  }
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: #faf8ff; border-radius: 20px; border: 1.5px dashed var(--primary-border);">
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">🐾</div>
+        <h3 style="color: var(--primary); margin-bottom: 8px;">Belum Ada Satwa di Kategori Ini</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Hubungi admin via WhatsApp untuk menanyakan jadwal ketersediaan anakan satwa.</p>
+        <button onclick="filterAdoptionCategory('Semua')" class="btn-primary" style="margin-top: 18px; padding: 10px 22px; font-size: 0.88rem;">Lihat Semua Satwa</button>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(a => {
     const isAvailable = !a.status || a.status.toLowerCase() === 'available' || a.status.toLowerCase() === 'tersedia';
     return `
     <div class="adoption-card">
@@ -751,6 +860,50 @@ function renderAdoptionGrid() {
   }).join('');
 }
 
+let currentProductCategory = 'Semua';
+function filterProductCategory(cat) {
+  currentProductCategory = cat;
+  document.querySelectorAll('.filter-pill-btn[data-prod-cat]').forEach(btn => {
+    if (btn.getAttribute('data-prod-cat') === cat) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  renderFullProductsGrid();
+}
+
+function renderFullProductsGrid() {
+  const grid = document.getElementById("products-full-grid");
+  if (!grid || !Array.isArray(PRODUCTS_DATA) || PRODUCTS_DATA.length === 0) return;
+
+  let filtered = PRODUCTS_DATA;
+  if (currentProductCategory && currentProductCategory !== 'Semua') {
+    filtered = PRODUCTS_DATA.filter(p => {
+      const cat = (p.category || '').toLowerCase();
+      const target = currentProductCategory.toLowerCase();
+      return cat.includes(target) || (target === 'alas kandang' && cat.includes('bedding'));
+    });
+  }
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-full-card" onclick="showProductDetail('${p.id}')" style="cursor: pointer;">
+      <img src="${p.image || p.thumb}" alt="${p.title}" class="product-full-card-img" onerror="this.src='assets/images/wood_pellets_bag.jpg'">
+      <div class="product-full-card-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="card-category-badge" style="margin-bottom: 0;">${p.category}</span>
+          ${p.price ? `<span class="card-price-tag">${p.price}</span>` : ''}
+        </div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">${p.title}</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; flex: 1;">${p.highlight || (p.description ? p.description.substring(0, 70) + '...' : '')}</p>
+        <button class="btn-pill-action" style="width: 100%; justify-content: center; font-size: 0.85rem;">
+          Lihat Detail & Pesan ➔
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
 function renderProductsGrid() {
   const grid = document.getElementById("products-grid-2x2");
   if (!grid || !Array.isArray(PRODUCTS_DATA) || PRODUCTS_DATA.length === 0) return;
@@ -770,7 +923,7 @@ function renderProductsGrid() {
 
 async function initLiveCatalog() {
   try {
-    // 1. Fetch Animals (Prioritaskan Node API, fallback ke file statis data/animals.json untuk GitHub Pages)
+    // 1. Fetch Animals
     let animalsRes = await fetch('/api/animals?t=' + Date.now()).catch(() => null);
     if (!animalsRes || !animalsRes.ok) {
       animalsRes = await fetch('data/animals.json?t=' + Date.now()).catch(() => null);
@@ -783,7 +936,7 @@ async function initLiveCatalog() {
       }
     }
 
-    // 2. Fetch Products (Prioritaskan Node API, fallback ke file statis data/products.json untuk GitHub Pages)
+    // 2. Fetch Products
     let productsRes = await fetch('/api/products?t=' + Date.now()).catch(() => null);
     if (!productsRes || !productsRes.ok) {
       productsRes = await fetch('data/products.json?t=' + Date.now()).catch(() => null);
@@ -793,11 +946,16 @@ async function initLiveCatalog() {
       if (Array.isArray(liveProducts) && liveProducts.length > 0) {
         PRODUCTS_DATA = liveProducts;
         renderProductsGrid();
+        renderFullProductsGrid();
       }
     }
   } catch (err) {
     console.log('Menggunakan data offline katalog bawaan:', err);
   }
+
+  // Activate initial page based on URL hash
+  const initialPage = getPageFromHash();
+  showPage(initialPage, false);
 }
 
 // Initialize on DOM ready
@@ -806,4 +964,5 @@ if (document.readyState === 'loading') {
 } else {
   initLiveCatalog();
 }
+
 
