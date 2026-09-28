@@ -49,8 +49,49 @@ Sistem transaksi tetap berjalan **offline** dan personal, sementara website berf
 
 - **HTML5:** Struktur semantik, aksesibilitas, dan SEO meta tags.
 - **Vanilla CSS3:** Design tokens kustom, responsive breakpoints, glassmorphism, dan animasi mikro.
-- **JavaScript (ES6+):** Logika katalog dinamis, modal handler, generator pesan WhatsApp terenkripsi, dan carousel navigation.
-- **Node.js:** Server static ringan bebas dependensi eksternal.
+- **JavaScript (ES6+):** Logika katalog dinamis, sinkronisasi live API, modal handler, generator pesan WhatsApp, dan carousel navigation.
+- **Node.js & Telegraf:** Web server + Headless CMS Telegram Bot untuk update katalog real-time dari smartphone.
+
+---
+
+## 🤖 Telegram Bot CMS (Admin Management)
+
+Website Bayoung Exopet dilengkapi dengan **Headless CMS via Telegram Bot** (`@bayoungBot`). Admin dan tim dapat menginput atau mengedit katalog produk dan hewan adopsi langsung dari smartphone tanpa perlu membuka dashboard web!
+
+### Cara Menggunakan Bot:
+1. Buka bot di Telegram: **`@bayoungBot`**
+2. Ketik `/start` atau `/menu` untuk memunculkan tombol menu interaktif.
+3. Fitur yang tersedia:
+   - **➕ Tambah Produk:** Input judul, harga, kategori, deskripsi & upload foto produk.
+   - **➕ Tambah Hewan:** Input nama, usia, biaya adopsi, karakter & foto hewan adopsi.
+   - **📦 Kelola Produk:** Ubah harga produk atau hapus produk.
+   - **🐾 Kelola Hewan:** Ubah status (*Available* / *Adopted*) atau hapus hewan.
+   - **👥 Kelola Admin:** Tambah / hapus hak akses admin via Telegram ID.
+
+### Perintah Cepat (Format Caption):
+Kirim foto langsung ke bot dengan format caption:
+```text
+/tambah_produk
+Nama: Wood Pellets 10kg
+Harga: Rp 85.000
+Kategori: Bedding & Litter
+Deskripsi: Pelet kayu pinus premium daya serap tinggi
+```
+Atau untuk hewan:
+```text
+/tambah_hewan
+Nama: Musang Bulan
+Kategori: Musang
+Harga: Rp 850.000
+Usia: 2 Bulan
+Karakter: Jinak total, manja, aktif
+```
+
+### Manajemen Hak Akses Admin (Superadmin):
+- `/list_admin` : Melihat daftar ID admin yang terdaftar.
+- `/tambah_admin [ID_TELEGRAM]` : Mendaftarkan admin baru (hanya Superadmin).
+- `/hapus_admin [ID_TELEGRAM]` : Mencabut akses admin (hanya Superadmin).
+
 
 ---
 

@@ -1,0 +1,158 @@
+[
+  {
+    "badge": "New Item",
+    "status": "Tersedia",
+    "specs": [],
+    "image": "assets/images/uploads/img_1790562178615_s7gyl.jpg",
+    "thumb": "assets/images/uploads/img_1790562178615_s7gyl.jpg",
+    "title": "abiyuna",
+    "id": "abiyuna",
+    "price": "Rp 10000",
+    "category": "Bedding & Litter",
+    "description": "anakucay",
+    "highlight": "anakucay",
+    "suitableFor": "Semua hewan eksotis peliharaan"
+  },
+  {
+    "badge": "New Item",
+    "status": "Tersedia",
+    "specs": [],
+    "image": "assets/images/wood_pellets_bag.jpg",
+    "thumb": "assets/images/wood_pellets_pile.jpg",
+    "title": "abiyu",
+    "id": "abiyu",
+    "price": "Rp 123710",
+    "category": "Daily Diet & Supplements",
+    "description": "dhjla",
+    "highlight": "dhjla",
+    "suitableFor": "Semua hewan eksotis peliharaan"
+  },
+  {
+    "id": "wood-pellets",
+    "title": "Wood Pellets Premium",
+    "category": "Bedding & Litter",
+    "price": "Rp 35.000",
+    "status": "Tersedia",
+    "image": "assets/images/wood_pellets_bag.jpg",
+    "thumb": "assets/images/wood_pellets_pile.jpg",
+    "badge": "Best Seller",
+    "highlight": "Alas Kandang Kayu Pinus Alami 100%",
+    "specs": [
+      {
+        "label": "Bahan",
+        "val": "100% Serat Kayu Pinus Alami Murni"
+      },
+      {
+        "label": "Daya Serap",
+        "val": "Hingga 3x lipat berat pellet"
+      },
+      {
+        "label": "Kontrol Bau",
+        "val": "Ekstrak resin pinus alami pengikat amonia"
+      },
+      {
+        "label": "Debu",
+        "val": "Ultra Rendah (Dust-Free 99%)"
+      },
+      {
+        "label": "Kemasan",
+        "val": "Tersedia 1 kg, 5 kg, 10 kg, sak 20 kg"
+      }
+    ],
+    "description": "Wood Pellets Bayoung diproduksi khusus untuk kenyamanan dan kesehatan sistem pernapasan hewan eksotis Anda. Butiran pellet padat yang saat terkena cairan akan langsung menyerap seketika dan terurai menjadi serbuk tanpa meninggalkan genangan basah ataupun aroma amonia yang menyengat.",
+    "suitableFor": "Musang, Otter, Kelinci, Hamster, Sugar Glider, Burung & Kucing"
+  },
+  {
+    "id": "food-nutrition",
+    "title": "Food & Nutrition",
+    "category": "Daily Diet & Supplements",
+    "price": "Rp 45.000",
+    "status": "Tersedia",
+    "image": "assets/images/food_nutrition.jpg",
+    "thumb": "assets/images/food_nutrition.jpg",
+    "badge": "Selected Nutrition",
+    "highlight": "Pakan Seimbang & Suplemen Multivitamin",
+    "specs": [
+      {
+        "label": "Kandungan",
+        "val": "Biji-bijian grade A, dried fruits, ekstrak protein & kalsium"
+      },
+      {
+        "label": "Standar",
+        "val": "Bebas bahan pengawet kimia berbahaya"
+      },
+      {
+        "label": "Fungsi",
+        "val": "Menjaga kilau bulu, imunitas, dan kepadatan tulang"
+      },
+      {
+        "label": "Penyajian",
+        "val": "Siap saji setiap hari sesuai takaran porsi"
+      }
+    ],
+    "description": "Formula pakan bernutrisi lengkap yang diracik khusus untuk memenuhi kebutuhan biologis hewan eksotis. Membantu hewan peliharaan Anda tumbuh sehat, bulu tetap lebat bersinar, serta memiliki daya tahan tubuh yang prima.",
+    "suitableFor": "Omnivora, Herbivora Eksotis, Musang, Rodentia & Kelinci"
+  },
+  {
+    "id": "habitat-enclosure",
+    "title": "Habitat & Enclosure",
+    "category": "Housing & Furniture",
+    "price": "Rp 120.000",
+    "status": "Tersedia",
+    "image": "assets/images/habitat_enclosure.jpg",
+    "thumb": "assets/images/habitat_enclosure.jpg",
+    "badge": "Eco-Friendly",
+    "highlight": "Rumah Kayu Alami, Hammock & Aksesoris Kandang",
+    "specs": [
+      {
+        "label": "Material",
+        "val": "Kayu solid alami pilihan, tanpa vernis kimia"
+      },
+      {
+        "label": "Desain",
+        "val": "Pintu lengkung artistik, sirkulasi udara optimal"
+      },
+      {
+        "label": "Ketahanan",
+        "val": "Kokoh, tahan gigitan wajar, mudah dibersihkan"
+      },
+      {
+        "label": "Varian",
+        "val": "Tersedia aneka ukuran mini hingga medium"
+      }
+    ],
+    "description": "Tempat berlindung dan istirahat yang menyerupai habitat alami di hutan. Memberikan rasa aman (sense of security) sehingga hewan eksotis Anda bebas dari stres dan dapat beristirahat dengan nyaman.",
+    "suitableFor": "Musang anakan, Otter, Hamster Syrian, Kelinci kerdil & Landak mini"
+  },
+  {
+    "id": "accessories",
+    "title": "Pet Accessories",
+    "category": "Bowls & Handling",
+    "price": "Rp 25.000",
+    "status": "Tersedia",
+    "image": "assets/images/pet_accessories.jpg",
+    "thumb": "assets/images/pet_accessories.jpg",
+    "badge": "Exclusive Purple",
+    "highlight": "Mangkuk Keramik Ungu, Botol Minum Dot & Harness",
+    "specs": [
+      {
+        "label": "Material",
+        "val": "Keramik tebal glazed anti gores & food-grade"
+      },
+      {
+        "label": "Desain",
+        "val": "Khas ungu Bayoung dengan ukiran lambang paw"
+      },
+      {
+        "label": "Fitur",
+        "val": "Bobot mantap tidak gampang terbalik atau tersenggol"
+      },
+      {
+        "label": "Perawatan",
+        "val": "Sangat mudah dicuci dan higienis"
+      }
+    ],
+    "description": "Aksesoris pelengkap premium bertema ungu ikonik Bayoung. Menjaga area makan hewan tetap bersih, rapi, dan estetis di dalam kandang kesayangan Anda.",
+    "suitableFor": "Semua jenis hewan eksotis peliharaan"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "bayoung",
+  "version": "1.0.0",
+  "description": "Website resmi **Bayoung Exopet** yang dirancang khusus sebagai **Digital Storefront + Brand Portfolio + Lead Generation** untuk bisnis studio hewan eksotis dan penyedia perlengkapan *wood pellets* di Malang, Jawa Timur.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "export-sheets": "node scripts/generate_sheets.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryuukage-byte/bayoung.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ryuukage-byte/bayoung/issues"
+  },
+  "homepage": "https://github.com/ryuukage-byte/bayoung#readme",
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "telegraf": "^4.16.3",
+    "xlsx": "^0.18.5"
+  }
+}
