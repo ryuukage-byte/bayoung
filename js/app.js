@@ -782,6 +782,9 @@ function showPage(pageId, updateUrl = true) {
   // 6. Refresh grids when visiting specific pages
   if (pageId === 'adopsi') renderAdoptionGrid();
   if (pageId === 'produk') renderFullProductsGrid();
+
+  // 7. Refresh drag-to-scroll buttons on visible page
+  setTimeout(refreshAllDragScrolls, 60);
 }
 
 window.addEventListener('hashchange', () => {
@@ -956,13 +959,190 @@ async function initLiveCatalog() {
   // Activate initial page based on URL hash
   const initialPage = getPageFromHash();
   showPage(initialPage, false);
+
+  // Initialize drag-to-scroll on all avatar bars
+  initAllDragToScroll();
+}
+
+// =====================================================================
+// DRAG-TO-SCROLL & HORIZONTAL SCROLL FOR CATEGORY AVATARS
+// =====================================================================
+
+function setupDragToScroll(wrapper) {
+  if (!wrapper || wrapper._hasDragInitialized) return;
+  wrapper._hasDragInitialized = true;
+
+  const container = wrapper.querySelector('.category-avatars');
+  const btnPrev = wrapper.querySelector('.btn-prev');
+  const btnNext = wrapper.querySelector('.btn-next');
+
+  if (!container) return;
+
+  function updateButtons() {
+    const maxScroll = Math.max(0, container.scrollWidth - container.clientWidth);
+    if (maxScroll <= 4) {
+      if (btnPrev) btnPrev.style.opacity = '0.3';
+      if (btnNext) btnNext.style.opacity = '0.3';
+      return;
+    }
+    if (btnPrev) {
+      const isStart = container.scrollLeft <= 4;
+      btnPrev.style.opacity = isStart ? '0.35' : '1';
+      btnPrev.style.pointerEvents = isStart ? 'none' : 'auto';
+    }
+    if (btnNext) {
+      const isEnd = container.scrollLeft >= maxScroll - 4;
+      btnNext.style.opacity = isEnd ? '0.35' : '1';
+      btnNext.style.pointerEvents = isEnd ? 'none' : 'auto';
+    }
+  }
+
+  wrapper._updateButtons = updateButtons;
+
+  if (btnPrev) {
+    btnPrev.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      container.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+  }
+
+  if (btnNext) {
+    btnNext.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      container.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  }
+
+  // Mouse Wheel: horizontal scroll when hovering
+  container.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll > 0) {
+        const canScrollLeft = container.scrollLeft > 0 && e.deltaY < 0;
+        const canScrollRight = container.scrollLeft < maxScroll && e.deltaY > 0;
+        if (canScrollLeft || canScrollRight) {
+          e.preventDefault();
+          container.scrollLeft += e.deltaY;
+          updateButtons();
+        }
+      }
+    }
+  }, { passive: false });
+
+  // Mouse Drag to Scroll
+  let isDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let hasDragged = false;
+  let lastX = 0;
+  let velocity = 0;
+  let momentumID = null;
+
+  function stopMomentum() {
+    if (momentumID) {
+      cancelAnimationFrame(momentumID);
+      momentumID = null;
+    }
+  }
+
+  container.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    stopMomentum();
+    isDown = true;
+    hasDragged = false;
+    startX = e.pageX - container.offsetLeft;
+    lastX = e.pageX;
+    scrollStart = container.scrollLeft;
+    velocity = 0;
+    container.classList.add('is-dragging');
+    document.body.style.userSelect = 'none';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    const x = e.pageX - container.offsetLeft;
+    const walk = x - startX;
+    if (Math.abs(walk) > 4) {
+      hasDragged = true;
+    }
+    velocity = e.pageX - lastX;
+    lastX = e.pageX;
+    container.scrollLeft = scrollStart - walk;
+    updateButtons();
+  });
+
+  function handleDragEnd() {
+    if (!isDown) return;
+    isDown = false;
+    container.classList.remove('is-dragging');
+    document.body.style.userSelect = '';
+
+    // Momentum glide
+    if (Math.abs(velocity) > 1.5) {
+      let currentVelocity = velocity * 1.4;
+      function glide() {
+        if (Math.abs(currentVelocity) < 0.4) {
+          stopMomentum();
+          updateButtons();
+          return;
+        }
+        container.scrollLeft -= currentVelocity;
+        currentVelocity *= 0.92;
+        updateButtons();
+        momentumID = requestAnimationFrame(glide);
+      }
+      stopMomentum();
+      momentumID = requestAnimationFrame(glide);
+    }
+
+    // Suppress accidental clicks when user was dragging
+    if (hasDragged) {
+      const clickGuard = (e) => {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        e.preventDefault();
+      };
+      container.addEventListener('click', clickGuard, { capture: true, once: true });
+      setTimeout(() => {
+        container.removeEventListener('click', clickGuard, { capture: true });
+      }, 120);
+    }
+  }
+
+  window.addEventListener('mouseup', handleDragEnd);
+
+  container.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+
+  requestAnimationFrame(updateButtons);
+  setTimeout(updateButtons, 150);
+}
+
+function initAllDragToScroll() {
+  document.querySelectorAll('.category-avatars-scroll-wrapper').forEach(wrapper => {
+    setupDragToScroll(wrapper);
+  });
+}
+
+function refreshAllDragScrolls() {
+  document.querySelectorAll('.category-avatars-scroll-wrapper').forEach(wrapper => {
+    if (wrapper._updateButtons) {
+      wrapper._updateButtons();
+    }
+  });
 }
 
 // Initialize on DOM ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initLiveCatalog);
+  document.addEventListener('DOMContentLoaded', () => {
+    initLiveCatalog();
+    initAllDragToScroll();
+  });
 } else {
   initLiveCatalog();
+  initAllDragToScroll();
 }
 
 

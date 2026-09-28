@@ -162,6 +162,83 @@
         </div>
       </section>
 
+      <!-- =================================================================
+           OUR WORLD CATEGORY BAR (DRAGGABLE & SWIPEABLE)
+           ================================================================= -->
+      <section class="our-world-section" style="margin-top: 10px; margin-bottom: 40px;">
+        <div class="container">
+          <div class="our-world-bar">
+            
+            <!-- Intro Label -->
+            <div class="world-intro">
+              <div class="world-tag">
+                <span style="color: var(--primary);">✦</span> Ragam Satwa
+              </div>
+              <span class="world-subtitle">Beragam jenis, satu ketulusan cinta</span>
+            </div>
+
+            <!-- Category Avatars Scroll Wrapper with Drag & Arrows -->
+            <div class="category-avatars-scroll-wrapper">
+              <button type="button" class="avatar-scroll-btn btn-prev" aria-label="Geser ke kiri">‹</button>
+              
+              <div class="category-avatars">
+                <!-- 1. Musang -->
+                <div class="category-item" onclick="filterCategory('Musang')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/guide_musang.jpg" alt="Musang" draggable="false">
+                  </div>
+                  <span class="category-name">Musang</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 2. Otter -->
+                <div class="category-item" onclick="filterCategory('Otter')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/otter.jpg" alt="Berang-berang" draggable="false">
+                  </div>
+                  <span class="category-name">Berang-berang</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 3. Rodent -->
+                <div class="category-item" onclick="filterCategory('Rodent')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/hamster.jpg" alt="Hamster" draggable="false">
+                  </div>
+                  <span class="category-name">Hamster</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 4. Rabbit -->
+                <div class="category-item" onclick="filterCategory('Rabbit')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/rabbit.jpg" alt="Kelinci" draggable="false">
+                  </div>
+                  <span class="category-name">Kelinci</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 5. Other -->
+                <div class="category-item" onclick="filterCategory('Other')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/hedgehog.jpg" alt="Satwa Lainnya" draggable="false">
+                  </div>
+                  <span class="category-name">Lainnya</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+              </div>
+
+              <button type="button" class="avatar-scroll-btn btn-next" aria-label="Geser ke kanan">›</button>
+            </div>
+
+            <!-- CTA Button -->
+            <button onclick="showPage('ragam-satwa')" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
+              Lihat Semua Satwa ➔
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Value Props (Kenapa Bayoung Exopet) -->
       <section class="value-props-section">
         <div class="container">
@@ -286,65 +363,71 @@
       </section>
 
       <!-- Category Filter Avatars -->
-      <section style="margin-bottom: 48px;">
+      <section class="our-world-section" style="margin-top: 0; margin-bottom: 48px;">
         <div class="container">
           <div class="our-world-bar">
             <div class="world-intro">
               <div class="world-tag">
-                <span style="color: var(--primary);">✦</span> Kategori Pilihan
+                <span style="color: var(--primary);">✦</span> Ragam Satwa
               </div>
-              <span class="world-subtitle">Klik kategori untuk langsung melihat satwa yang siap diadopsi:</span>
+              <span class="world-subtitle">Beragam jenis, satu ketulusan cinta</span>
             </div>
 
-            <div class="category-avatars">
-              <!-- 1. Musang -->
-              <div class="category-item" onclick="filterCategory('Musang')">
-                <div class="avatar-circle">
-                  <img src="assets/images/guide_musang.jpg" alt="Musang">
+            <div class="category-avatars-scroll-wrapper">
+              <button type="button" class="avatar-scroll-btn btn-prev" aria-label="Geser ke kiri">‹</button>
+
+              <div class="category-avatars">
+                <!-- 1. Musang -->
+                <div class="category-item" onclick="filterCategory('Musang')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/guide_musang.jpg" alt="Musang" draggable="false">
+                  </div>
+                  <span class="category-name">Musang</span>
+                  <div class="category-arrow-btn">➔</div>
                 </div>
-                <span class="category-name">Musang</span>
-                <div class="category-arrow-btn">➔</div>
+
+                <!-- 2. Otter -->
+                <div class="category-item" onclick="filterCategory('Otter')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/otter.jpg" alt="Berang-berang" draggable="false">
+                  </div>
+                  <span class="category-name">Berang-berang</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 3. Rodent -->
+                <div class="category-item" onclick="filterCategory('Rodent')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/hamster.jpg" alt="Hamster" draggable="false">
+                  </div>
+                  <span class="category-name">Hamster</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 4. Rabbit -->
+                <div class="category-item" onclick="filterCategory('Rabbit')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/rabbit.jpg" alt="Kelinci" draggable="false">
+                  </div>
+                  <span class="category-name">Kelinci</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
+
+                <!-- 5. Other -->
+                <div class="category-item" onclick="filterCategory('Other')">
+                  <div class="avatar-circle">
+                    <img src="assets/images/hedgehog.jpg" alt="Satwa Lainnya" draggable="false">
+                  </div>
+                  <span class="category-name">Lainnya</span>
+                  <div class="category-arrow-btn">➔</div>
+                </div>
               </div>
 
-              <!-- 2. Otter -->
-              <div class="category-item" onclick="filterCategory('Otter')">
-                <div class="avatar-circle">
-                  <img src="assets/images/otter.jpg" alt="Berang-berang">
-                </div>
-                <span class="category-name">Berang-berang</span>
-                <div class="category-arrow-btn">➔</div>
-              </div>
-
-              <!-- 3. Rodent -->
-              <div class="category-item" onclick="filterCategory('Rodent')">
-                <div class="avatar-circle">
-                  <img src="assets/images/hamster.jpg" alt="Hamster">
-                </div>
-                <span class="category-name">Hamster</span>
-                <div class="category-arrow-btn">➔</div>
-              </div>
-
-              <!-- 4. Rabbit -->
-              <div class="category-item" onclick="filterCategory('Rabbit')">
-                <div class="avatar-circle">
-                  <img src="assets/images/rabbit.jpg" alt="Kelinci">
-                </div>
-                <span class="category-name">Kelinci</span>
-                <div class="category-arrow-btn">➔</div>
-              </div>
-
-              <!-- 5. Other -->
-              <div class="category-item" onclick="filterCategory('Other')">
-                <div class="avatar-circle">
-                  <img src="assets/images/hedgehog.jpg" alt="Satwa Lainnya">
-                </div>
-                <span class="category-name">Lainnya</span>
-                <div class="category-arrow-btn">➔</div>
-              </div>
+              <button type="button" class="avatar-scroll-btn btn-next" aria-label="Geser ke kanan">›</button>
             </div>
 
-            <button onclick="showPage('adopsi')" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem; flex-shrink: 0;">
-              Lihat Ruang Adopsi ➔
+            <button onclick="showPage('adopsi')" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem; flex-shrink: 0; white-space: nowrap;">
+              Lihat Semua Satwa ➔
             </button>
           </div>
         </div>
