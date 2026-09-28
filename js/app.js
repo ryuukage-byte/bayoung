@@ -39,6 +39,23 @@ function formatBadge(badge) {
   return badge;
 }
 
+function formatCategoryLabel(cat) {
+  if (!cat) return 'Umum';
+  const c = String(cat).trim().toLowerCase();
+  if (c.includes('bedding') || c.includes('litter') || c.includes('alas')) return 'Alas Kandang';
+  if (c.includes('supplements') || c.includes('diet') || c.includes('food') || c.includes('pakan') || c.includes('nutrisi')) return 'Pakan & Nutrisi';
+  if (c.includes('housing') || c.includes('enclosure') || c.includes('furniture') || c.includes('kandang')) return 'Kandang & Habitat';
+  if (c.includes('bowls') || c.includes('handling') || c.includes('accessories') || c.includes('aksesoris')) return 'Aksesoris Kandang';
+  if (c.includes('musang')) return 'Musang';
+  if (c.includes('otter') || c.includes('berang')) return 'Berang-berang';
+  if (c.includes('hamster') || c.includes('rodent')) return 'Hamster';
+  if (c.includes('rabbit') || c.includes('kelinci')) return 'Kelinci';
+  if (c.includes('other') || c.includes('lainnya')) return 'Lainnya';
+  return cat;
+}
+
+const WHATSAPP_SVG_ICON = `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>`;
+
 // Animals Data
 let ANIMALS_DATA = [
   {
@@ -289,22 +306,18 @@ function showAnimalDetail(animalId) {
     </div>
     <div class="modal-body">
       <div class="modal-badge-row">
-        <span class="card-category-badge">${animal.category}</span>
+        <span class="card-category-badge">${formatCategoryLabel(animal.category)}</span>
         <div class="card-status-row ${isAvailable ? '' : 'status-adopted-row'}" style="margin-bottom: 0;">
           <span class="status-dot ${isAvailable ? '' : 'status-adopted'}"></span>
           <span>${formatStatus(animal.status)}</span>
         </div>
-        ${animal.price ? `<span class="card-price-tag" style="margin-left: auto; font-size: 0.95rem;">${animal.price}</span>` : ''}
+        ${animal.price ? `<span class="card-price-tag" style="margin-left: auto; font-size: 1.05rem;">${animal.price}</span>` : ''}
       </div>
 
       <h2 class="modal-title">${animal.name}</h2>
       <p class="modal-subtitle"><em>${animal.latin || 'Satwa Eksotis'}</em> • Usia: ${animal.age || '-'}</p>
 
       <div class="modal-spec-grid">
-        <div class="spec-box" style="background: #faf7ff; border: 1.5px solid var(--primary-border);">
-          <div class="spec-label">Biaya Adopsi</div>
-          <div class="spec-value" style="color: var(--primary); font-weight: 800; font-size: 1.1rem;">${animal.price || 'Hubungi Admin'}</div>
-        </div>
         <div class="spec-box">
           <div class="spec-label">Karakter & Sifat</div>
           <div class="spec-value">${animal.character || '-'}</div>
@@ -317,18 +330,22 @@ function showAnimalDetail(animalId) {
           <div class="spec-label">Kondisi Kesehatan</div>
           <div class="spec-value">${animal.health || 'Sehat prima & terawat'}</div>
         </div>
+        <div class="spec-box">
+          <div class="spec-label">Kebutuhan Kandang</div>
+          <div class="spec-value">${animal.requirements || 'Kandang bersih & nyaman'}</div>
+        </div>
       </div>
 
       <div class="modal-description">
         <strong>Tentang Satwa Ini:</strong><br>
-        ${animal.description}
+        <p style="margin-top: 6px; line-height: 1.6;">${animal.description}</p>
       </div>
 
       <div class="modal-cta-box">
-        <h4 class="modal-cta-title">Tertarik mengadopsi satwa ini?</h4>
+        <h4 class="modal-cta-title">Tertarik Mengadopsi Satwa Ini?</h4>
         <p class="modal-cta-desc">Hubungi kami via WhatsApp untuk konfirmasi ketersediaan, konsultasi adopsi, dan jadwal temu di studio Malang.</p>
         <button class="btn-whatsapp-modal" onclick="inquireAnimal('${animal.name}')">
-          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/></svg>
+          ${WHATSAPP_SVG_ICON}
           Tanya Adopsi via WhatsApp
         </button>
       </div>
@@ -356,36 +373,27 @@ function showProductDetail(productId) {
     </div>
     <div class="modal-body">
       <div class="modal-badge-row">
-        <span class="card-category-badge">${product.category}</span>
+        <span class="card-category-badge">${formatCategoryLabel(product.category)}</span>
         <span class="card-category-badge" style="background:#ecfdf5; color:#059669;">${formatBadge(product.badge || 'Tersedia')}</span>
-        ${product.price ? `<span class="card-price-tag" style="margin-left: auto; font-size: 1rem;">${product.price}</span>` : ''}
+        ${product.price ? `<span class="card-price-tag" style="margin-left: auto; font-size: 1.05rem;">${product.price}</span>` : ''}
       </div>
 
       <h2 class="modal-title">${product.title}</h2>
-      <p class="modal-subtitle">${product.highlight || ''}</p>
+      ${product.highlight ? `<p class="modal-subtitle">${product.highlight}</p>` : ''}
 
-      <div class="modal-spec-grid">
-        ${product.price ? `
-          <div class="spec-box" style="background: #faf7ff; border: 1.5px solid var(--primary-border);">
-            <div class="spec-label">Harga</div>
-            <div class="spec-value" style="color: var(--primary); font-weight: 800; font-size: 1.1rem;">${product.price}</div>
-          </div>
-        ` : ''}
-        ${specsHtml}
-      </div>
+      ${specsHtml ? `<div class="modal-spec-grid">${specsHtml}</div>` : ''}
 
       <div class="modal-description">
         <strong>Deskripsi Produk:</strong><br>
-        ${product.description}
-        <br><br>
-        <strong>Cocok untuk:</strong> ${product.suitableFor}
+        <p style="margin-top: 6px; line-height: 1.6;">${product.description || 'Produk perawatan satwa berkualitas dari Bayoung Exopet.'}</p>
+        ${product.suitableFor ? `<div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);"><strong>Cocok untuk:</strong> ${product.suitableFor}</div>` : ''}
       </div>
 
       <div class="modal-cta-box">
         <h4 class="modal-cta-title">Pesan atau Konsultasi Produk</h4>
         <p class="modal-cta-desc">Pengiriman dari studio Bayoung Exopet Pakisaji, Malang ke seluruh Indonesia via kargo / kurir instan.</p>
         <button class="btn-whatsapp-modal" onclick="inquireProduct('${product.title}')">
-          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.632.062-1.929-.444-1.396-.546-2.316-1.942-2.39-2.039-.074-.097-.565-.75-.565-1.431 0-.681.353-1.018.479-1.155.127-.137.279-.172.372-.172.093 0 .186.002.268.006.088.005.207-.033.324.249.122.293.418 1.019.455 1.094.037.075.062.163.012.261-.05.098-.075.16-.149.247-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.639.83 1.034.57.508 1.05.666 1.199.74.149.074.236.062.323-.037.087-.099.373-.434.472-.583.099-.149.198-.124.335-.074.137.05 87.411.411 1.02.485.15.074.25.112.287.174.037.062.037.362-.107.767z"/></svg>
+          ${WHATSAPP_SVG_ICON}
           Pesan via WhatsApp
         </button>
       </div>
@@ -424,6 +432,7 @@ function showGuidesModal(guideId = "guide-musang") {
         <h4 class="modal-cta-title">Punya Pertanyaan Seputar Perawatan?</h4>
         <p class="modal-cta-desc">Konsultasikan kebutuhan kandang, makanan, dan adaptasi hewan Anda langsung bersama tim Bayoung Exopet.</p>
         <button class="btn-whatsapp-modal" onclick="inquireConsultation()">
+          ${WHATSAPP_SVG_ICON}
           Konsultasi Perawatan via WhatsApp
         </button>
       </div>
@@ -885,7 +894,11 @@ function renderFullProductsGrid() {
     filtered = PRODUCTS_DATA.filter(p => {
       const cat = (p.category || '').toLowerCase();
       const target = currentProductCategory.toLowerCase();
-      return cat.includes(target) || (target === 'alas kandang' && cat.includes('bedding'));
+      if (target.includes('alas')) return cat.includes('alas') || cat.includes('bedding') || cat.includes('litter') || cat.includes('pellet');
+      if (target.includes('pakan') || target.includes('nutrisi')) return cat.includes('pakan') || cat.includes('nutrisi') || cat.includes('diet') || cat.includes('supplement') || cat.includes('food');
+      if (target.includes('kandang')) return cat.includes('kandang') || cat.includes('housing') || cat.includes('enclosure') || cat.includes('habitat');
+      if (target.includes('aksesoris')) return cat.includes('aksesoris') || cat.includes('bowl') || cat.includes('accessories');
+      return cat.includes(target);
     });
   }
 
@@ -894,7 +907,7 @@ function renderFullProductsGrid() {
       <img src="${p.image || p.thumb}" alt="${p.title}" class="product-full-card-img" onerror="this.src='assets/images/wood_pellets_bag.jpg'">
       <div class="product-full-card-body">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span class="card-category-badge" style="margin-bottom: 0;">${p.category}</span>
+          <span class="card-category-badge" style="margin-bottom: 0;">${formatCategoryLabel(p.category)}</span>
           ${p.price ? `<span class="card-price-tag">${p.price}</span>` : ''}
         </div>
         <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">${p.title}</h3>

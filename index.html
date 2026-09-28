@@ -608,12 +608,12 @@
             </div>
 
             <!-- Search Quick Button -->
-            <button onclick="showSearchModal()" class="btn-pill-action" style="font-size: 0.85rem;">
+            <button onclick="showSearchModal()" class="filter-search-btn" aria-label="Cari Satwa">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              Cari Nama Satwa
+              <span>Cari Nama Satwa</span>
             </button>
 
           </div>
@@ -707,18 +707,22 @@
                 Inovasi alas kandang alami 100% serat kayu pinus murni. Efektif mengikat bau amonia, menyerap cairan seketika, dan tidak berdebu sehingga aman bagi sistem pernapasan satwa eksotis Anda.
               </p>
               
-              <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
-                  <span>✔</span> Daya Serap Cairan Hingga 3x Lipat
+              <div class="feature-list">
+                <div class="feature-item">
+                  <span class="feature-icon-badge">✓</span>
+                  <span>Daya Serap Cairan Hingga 3x Lipat</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
-                  <span>✔</span> Resin Pinus Alami Pengikat Bau Amonia
+                <div class="feature-item">
+                  <span class="feature-icon-badge">✓</span>
+                  <span>Resin Pinus Alami Pengikat Bau Amonia</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
-                  <span>✔</span> Ultra Rendah Debu (Dust-Free 99%)
+                <div class="feature-item">
+                  <span class="feature-icon-badge">✓</span>
+                  <span>Ultra Rendah Debu (Bebas Debu 99%)</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary);">
-                  <span>✔</span> Ramah Lingkungan & Dapat Didaur Ulang Jadi Kompos
+                <div class="feature-item">
+                  <span class="feature-icon-badge">✓</span>
+                  <span>Ramah Lingkungan & Dapat Didaur Ulang Jadi Kompos</span>
                 </div>
               </div>
 
@@ -752,11 +756,19 @@
           <div class="filter-bar-row">
             <div class="filter-pills-group">
               <button class="filter-pill-btn active" data-prod-cat="Semua" onclick="filterProductCategory('Semua')">Semua Produk</button>
-              <button class="filter-pill-btn" data-prod-cat="Bedding" onclick="filterProductCategory('Bedding')">🪵 Alas Kandang (Litter)</button>
-              <button class="filter-pill-btn" data-prod-cat="Supplements" onclick="filterProductCategory('Supplements')">🥑 Pakan & Nutrisi</button>
-              <button class="filter-pill-btn" data-prod-cat="Housing" onclick="filterProductCategory('Housing')">🏠 Kandang & Furniture</button>
-              <button class="filter-pill-btn" data-prod-cat="Bowls" onclick="filterProductCategory('Bowls')">🥣 Aksesoris Kandang</button>
+              <button class="filter-pill-btn" data-prod-cat="Alas Kandang" onclick="filterProductCategory('Alas Kandang')">🪵 Alas Kandang</button>
+              <button class="filter-pill-btn" data-prod-cat="Pakan & Nutrisi" onclick="filterProductCategory('Pakan & Nutrisi')">🥗 Pakan & Nutrisi</button>
+              <button class="filter-pill-btn" data-prod-cat="Kandang" onclick="filterProductCategory('Kandang')">🏠 Kandang & Tempat Tinggal</button>
+              <button class="filter-pill-btn" data-prod-cat="Aksesoris" onclick="filterProductCategory('Aksesoris')">🥣 Aksesoris Kandang</button>
             </div>
+
+            <button onclick="showSearchModal()" class="filter-search-btn" aria-label="Cari Produk">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Cari Produk</span>
+            </button>
           </div>
         </div>
       </section>

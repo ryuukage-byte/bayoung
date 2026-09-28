@@ -221,28 +221,28 @@ const ANIMAL_CAT_PRESETS = {
 
 const PRODUCT_CAT_PRESETS = {
   'Wood Pellets': {
-    category: 'Bedding & Litter',
+    category: 'Alas Kandang',
     defaultPrice: 35000,
     image: 'assets/images/wood_pellets_bag.jpg',
     thumb: 'assets/images/wood_pellets_pile.jpg',
     names: ['Wood Pellets Premium 1kg', 'Wood Pellets Premium 5kg', 'Wood Pellets Premium 10kg', 'Wood Pellets Sak 20kg']
   },
   'Pakan & Nutrisi': {
-    category: 'Daily Diet & Supplements',
+    category: 'Pakan & Nutrisi',
     defaultPrice: 45000,
     image: 'assets/images/food_nutrition.jpg',
     thumb: 'assets/images/food_nutrition.jpg',
     names: ['Mix Seed & Dried Fruits', 'Pelet Nutrisi Hewan Eksotis', 'Suplemen Multivitamin Prima']
   },
   'Kandang & Habitat': {
-    category: 'Housing & Furniture',
+    category: 'Kandang & Habitat',
     defaultPrice: 120000,
     image: 'assets/images/habitat_enclosure.jpg',
     thumb: 'assets/images/habitat_enclosure.jpg',
     names: ['Rumah Kayu Alami Eksotis', 'Hammock Ayunan Kandang', 'Kandang Portabel Nyaman']
   },
   'Aksesoris': {
-    category: 'Bowls & Handling',
+    category: 'Aksesoris Kandang',
     defaultPrice: 25000,
     image: 'assets/images/pet_accessories.jpg',
     thumb: 'assets/images/pet_accessories.jpg',
@@ -444,7 +444,7 @@ function initBot(token) {
       `/tambah_produk\n` +
       `Nama: Wood Pellets 10kg\n` +
       `Harga: Rp 85.000\n` +
-      `Kategori: Bedding & Litter\n` +
+      `Kategori: Alas Kandang\n` +
       `\`\`\``;
 
     await ctx.editMessageText(helpText, {
@@ -1431,7 +1431,7 @@ function initBot(token) {
     const lines = ctx.message.caption.split('\n');
     let title = 'Wood Pellets Premium';
     let price = 'Rp 35.000';
-    let category = 'Bedding & Litter';
+    let category = 'Alas Kandang';
 
     lines.forEach(line => {
       const lower = line.toLowerCase();

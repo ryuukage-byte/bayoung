@@ -1,41 +1,41 @@
 [
   {
-    "badge": "New Item",
+    "badge": "Produk Baru",
     "status": "Tersedia",
     "specs": [],
     "image": "assets/images/uploads/img_1790562178615_s7gyl.jpg",
     "thumb": "assets/images/uploads/img_1790562178615_s7gyl.jpg",
     "title": "abiyuna",
     "id": "abiyuna",
-    "price": "Rp 10000",
-    "category": "Bedding & Litter",
+    "price": "Rp 10.000",
+    "category": "Alas Kandang",
     "description": "anakucay",
     "highlight": "anakucay",
     "suitableFor": "Semua hewan eksotis peliharaan"
   },
   {
-    "badge": "New Item",
+    "badge": "Produk Baru",
     "status": "Tersedia",
     "specs": [],
     "image": "assets/images/wood_pellets_bag.jpg",
     "thumb": "assets/images/wood_pellets_pile.jpg",
     "title": "abiyu",
     "id": "abiyu",
-    "price": "Rp 123710",
-    "category": "Daily Diet & Supplements",
+    "price": "Rp 123.710",
+    "category": "Pakan & Nutrisi",
     "description": "dhjla",
     "highlight": "dhjla",
     "suitableFor": "Semua hewan eksotis peliharaan"
   },
   {
     "id": "wood-pellets",
-    "title": "Wood Pellets Premium",
-    "category": "Bedding & Litter",
+    "title": "Pelet Kayu (Wood Pellets) Premium",
+    "category": "Alas Kandang",
     "price": "Rp 35.000",
     "status": "Tersedia",
     "image": "assets/images/wood_pellets_bag.jpg",
     "thumb": "assets/images/wood_pellets_pile.jpg",
-    "badge": "Best Seller",
+    "badge": "Terlaris",
     "highlight": "Alas Kandang Kayu Pinus Alami 100%",
     "specs": [
       {
@@ -44,7 +44,7 @@
       },
       {
         "label": "Daya Serap",
-        "val": "Hingga 3x lipat berat pellet"
+        "val": "Hingga 3x lipat berat pelet"
       },
       {
         "label": "Kontrol Bau",
@@ -52,30 +52,30 @@
       },
       {
         "label": "Debu",
-        "val": "Ultra Rendah (Dust-Free 99%)"
+        "val": "Ultra Rendah (Bebas Debu 99%)"
       },
       {
         "label": "Kemasan",
         "val": "Tersedia 1 kg, 5 kg, 10 kg, sak 20 kg"
       }
     ],
-    "description": "Wood Pellets Bayoung diproduksi khusus untuk kenyamanan dan kesehatan sistem pernapasan hewan eksotis Anda. Butiran pellet padat yang saat terkena cairan akan langsung menyerap seketika dan terurai menjadi serbuk tanpa meninggalkan genangan basah ataupun aroma amonia yang menyengat.",
-    "suitableFor": "Musang, Otter, Kelinci, Hamster, Sugar Glider, Burung & Kucing"
+    "description": "Pelet Kayu Bayoung diproduksi khusus untuk kenyamanan dan kesehatan pernapasan hewan eksotis Anda. Butiran pelet padat langsung menyerap cairan seketika dan terurai menjadi serbuk tanpa meninggalkan genangan basah ataupun aroma amonia yang menyengat.",
+    "suitableFor": "Musang, Berang-berang, Kelinci, Hamster, Sugar Glider, Burung & Kucing"
   },
   {
     "id": "food-nutrition",
-    "title": "Food & Nutrition",
-    "category": "Daily Diet & Supplements",
+    "title": "Pakan & Nutrisi Lengkap",
+    "category": "Pakan & Nutrisi",
     "price": "Rp 45.000",
     "status": "Tersedia",
     "image": "assets/images/food_nutrition.jpg",
     "thumb": "assets/images/food_nutrition.jpg",
-    "badge": "Selected Nutrition",
+    "badge": "Nutrisi Pilihan",
     "highlight": "Pakan Seimbang & Suplemen Multivitamin",
     "specs": [
       {
         "label": "Kandungan",
-        "val": "Biji-bijian grade A, dried fruits, ekstrak protein & kalsium"
+        "val": "Biji-bijian grade A, buah kering, ekstrak protein & kalsium"
       },
       {
         "label": "Standar",
@@ -91,18 +91,18 @@
       }
     ],
     "description": "Formula pakan bernutrisi lengkap yang diracik khusus untuk memenuhi kebutuhan biologis hewan eksotis. Membantu hewan peliharaan Anda tumbuh sehat, bulu tetap lebat bersinar, serta memiliki daya tahan tubuh yang prima.",
-    "suitableFor": "Omnivora, Herbivora Eksotis, Musang, Rodentia & Kelinci"
+    "suitableFor": "Omnivora, Herbivora Eksotis, Musang, Pengerat & Kelinci"
   },
   {
     "id": "habitat-enclosure",
-    "title": "Habitat & Enclosure",
-    "category": "Housing & Furniture",
+    "title": "Kandang & Tempat Tinggal Alami",
+    "category": "Kandang & Habitat",
     "price": "Rp 120.000",
     "status": "Tersedia",
     "image": "assets/images/habitat_enclosure.jpg",
     "thumb": "assets/images/habitat_enclosure.jpg",
-    "badge": "Eco-Friendly",
-    "highlight": "Rumah Kayu Alami, Hammock & Aksesoris Kandang",
+    "badge": "Ramah Lingkungan",
+    "highlight": "Rumah Kayu Alami, Ayunan & Aksesoris Kandang",
     "specs": [
       {
         "label": "Material",
@@ -121,19 +121,19 @@
         "val": "Tersedia aneka ukuran mini hingga medium"
       }
     ],
-    "description": "Tempat berlindung dan istirahat yang menyerupai habitat alami di hutan. Memberikan rasa aman (sense of security) sehingga hewan eksotis Anda bebas dari stres dan dapat beristirahat dengan nyaman.",
-    "suitableFor": "Musang anakan, Otter, Hamster Syrian, Kelinci kerdil & Landak mini"
+    "description": "Tempat berlindung dan istirahat yang menyerupai habitat alami di hutan. Memberikan rasa aman sehingga hewan eksotis Anda bebas dari stres dan dapat beristirahat dengan nyaman.",
+    "suitableFor": "Musang anakan, Berang-berang, Hamster Syrian, Kelinci kerdil & Landak mini"
   },
   {
     "id": "accessories",
-    "title": "Pet Accessories",
-    "category": "Bowls & Handling",
+    "title": "Aksesoris & Perlengkapan Kandang",
+    "category": "Aksesoris Kandang",
     "price": "Rp 25.000",
     "status": "Tersedia",
     "image": "assets/images/pet_accessories.jpg",
     "thumb": "assets/images/pet_accessories.jpg",
-    "badge": "Exclusive Purple",
-    "highlight": "Mangkuk Keramik Ungu, Botol Minum Dot & Harness",
+    "badge": "Eksklusif Bayoung",
+    "highlight": "Mangkuk Keramik Ungu, Botol Minum Dot & Tali Badan",
     "specs": [
       {
         "label": "Material",
@@ -141,7 +141,7 @@
       },
       {
         "label": "Desain",
-        "val": "Khas ungu Bayoung dengan ukiran lambang paw"
+        "val": "Khas ungu Bayoung dengan ukiran lambang jejak satwa"
       },
       {
         "label": "Fitur",
